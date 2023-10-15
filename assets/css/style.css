@@ -1,0 +1,36 @@
+/* <div id="splash">
+<h1>Robo Murder Mystery</h1>
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      Bootstrap
+    </a>
+  </div>
+</nav>
+
+</div>
+<main>
+<section id="about">About & Credit</section>
+<section id="game-rules">Game Rules</section>
+<section id="scoreboard"> */
+#splash {
+  background-color: aquamarine;
+}
+
+#splash,
+section {
+  border: solid 2px red;
+  padding: 2rem;
+}
+
+h1,
+nav,
+.modal{
+  border: solid 2px orange;
+
+}
+
+.modal-title {
+  border: solid 2px yellow;
+}
