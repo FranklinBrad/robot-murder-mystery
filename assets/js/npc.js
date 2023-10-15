@@ -153,11 +153,13 @@ function buildRoboArr(){
     //Each time the loop runs this takes itself and adds the above tempLine to the array.
     roboNPC = [...roboNPC, ...tempLine]
     }
+    console.log (roboNPC)
     //When the fetch is done this returns roboNPC to the function
     return roboNPC;
   })
   //Returns roboNPC to where the function was originally called.
-  return roboNPC;
 }
 
-export {roboNPC};
+//Callsf or buildRoboArr function
+buildRoboArr()
+
