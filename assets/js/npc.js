@@ -128,7 +128,7 @@ function buildRoboArr(){
 
     //clears the roboNPC array
     roboNPC = []
-      //Loop to build the array of Full Robo NPC's containing data from both mockaroo and hardcoded desc array
+      //Loop to build the array of Full Robo NPC's containing data from both mockaroo and hardcoded desc array uses NPC total from the top created variable
     for (i=0; i < npcTotal; i++){
       // This runs the generateRandomDesc() function to pull 1 of the lines from the npcDescArr to be used below as ranDesc
       var ranDesc = generateRandomDesc();
@@ -153,13 +153,18 @@ function buildRoboArr(){
     //Each time the loop runs this takes itself and adds the above tempLine to the array.
     roboNPC = [...roboNPC, ...tempLine]
     }
+    var murderBot = roboNPC[Math.floor(Math.random()*npcTotal)]
+    console.log(murderBot)
+
     console.log (roboNPC)
     //When the fetch is done this returns roboNPC to the function
-    return roboNPC;
+    return roboNPC, murderBot;
   })
   //Returns roboNPC to where the function was originally called.
 }
 
 //Callsf or buildRoboArr function
 buildRoboArr()
+
+// <img src="./assets/img/robothugs/${roboNPC.avatar}">
 
