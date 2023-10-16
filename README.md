@@ -22,7 +22,7 @@ Game Display: ATTACH IMAGES
 
 ## credits
 
-This game was created by Arthur Henningfield, Kurt Wensmann, Franklin Bradley and Laura Vollmer (in particular order).
+This game was created by Arthur Henningfield, Kurt Wensmann, Franklin Bradley and Laura Vollmer (in no particular order).
 
 Links to individuals Githubs include:
 Arthur Henningfield:
