@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* <div id="splash">
 <h1>Robo Murder Mystery</h1>
 <nav class="navbar bg-body-tertiary">
@@ -51,4 +52,26 @@ h2 {
   color: white;
   text-align: center;
   padding: 2rem;
+=======
+section#intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div#robot-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+>>>>>>> main
 }
