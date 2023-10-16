@@ -7,7 +7,7 @@
             style: {
                 width: 250,
                 tip: 'leftMiddle',
-                color: 'white',
+                color: 'yellow',
                 background:'#66CC33',
                 name: 'green'
             },
@@ -28,3 +28,9 @@
           });
         });
       });
+     // button sound
+      function sound(){
+        var snd = new Audio('./thunder.mp3')//wav is also supported
+        snd.play()//plays the sound
+   }
+   
