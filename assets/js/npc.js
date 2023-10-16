@@ -183,7 +183,7 @@ function getRoboImage(roboNPC) {
   for (var i = 0; i < roboNPC.length; i++) {
     if (roboNPC[i].avatar !== null || roboNPC[i].avatar !== undefined) {
       console.log("data", roboNPC);
-      var roboImage = "./assets/img/robothugs/" + roboNPC[i];
+      var roboImage = "./assets/img/robothugs/" + roboNPC[i].avatar;
       const image = $(".images");
       image.attr("src", roboImage);
     } else {
