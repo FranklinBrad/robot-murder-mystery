@@ -165,10 +165,11 @@ function buildRoboArr() {
     })
     //Returns roboNPC to where the function was originally called.
 
+    //calls image when data fetched
     .then(function (finalImage) {
       //call RoboImage function
       console.log(finalImage);
-      getRoboImage(roboNPC)
+      getRoboImage(roboNPC);
     })
 }
 
@@ -178,13 +179,16 @@ buildRoboArr()
 
 // function get to set random Robo images to img src attr
 function getRoboImage(roboNPC) {
-  if (roboNPC && roboNPC.avatar) {
-    console.log("data", roboNPC);
-    var roboImage = "./assets/img/robothugs/" + roboNPC.avatar;
-    const image = $(".images");
-    image.attr("src", roboImage);
-  } else {
-    console.log("robo undefined or null");
+  console.log(roboNPC[0].avatar);
+  for (var i = 0; i < roboNPC.length; i++) {
+    if (roboNPC[i].avatar !== null || roboNPC[i].avatar !== undefined) {
+      console.log("data", roboNPC);
+      var roboImage = "./assets/img/robothugs/" + roboNPC[i];
+      const image = $(".images");
+      image.attr("src", roboImage);
+    } else {
+      console.log("robo undefined or null");
+    }
   }
 }
 
