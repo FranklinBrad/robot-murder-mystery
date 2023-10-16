@@ -34,3 +34,21 @@ nav,
 .modal-title {
   border: solid 2px yellow;
 }
+
+#modal {
+  height: 60%;
+  width: 60%;
+  top: 10%;
+  left: 20%;
+}
+
+
+main {
+  opacity: 1; /* Initial opacity */
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
