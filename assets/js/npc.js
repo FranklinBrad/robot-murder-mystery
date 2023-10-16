@@ -180,12 +180,13 @@ buildRoboArr()
 // function get to set random Robo images to img src attr
 function getRoboImage(roboNPC) {
   console.log(roboNPC[0].avatar);
+  // for loop to run through array based on length
   for (var i = 0; i < roboNPC.length; i++) {
+    // if else to make sure that the values are not null or undefined
     if (roboNPC[i].avatar !== null || roboNPC[i].avatar !== undefined) {
-      console.log("data", roboNPC);
       var roboImage = "./assets/img/robothugs/" + roboNPC[i].avatar;
-      const image = $(".images");
-      image.attr("src", roboImage);
+      var roboAppend = `<img src='${roboImage}' alt='robo suspect' width='100px' height='100px' />`
+      $("#robot-display").append(roboAppend);
     } else {
       console.log("robo undefined or null");
     }
