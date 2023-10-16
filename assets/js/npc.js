@@ -185,11 +185,30 @@ function getRoboImage(roboNPC) {
     // if else to make sure that the values are not null or undefined
     if (roboNPC[i].avatar !== null || roboNPC[i].avatar !== undefined) {
       var roboImage = "./assets/img/robothugs/" + roboNPC[i].avatar;
-      var roboAppend = `<img src='${roboImage}' alt='robo suspect' width='100px' height='100px' />`
+      if (roboNPC[i].transportation === "Foot"){
+         roboNPC[i].model = ""
+         roboNPC[i].color = ""
+      } else if (roboNPC[i].transportation === "Hoverboard"){
+        roboNPC[i].model = ""
+      }
+      var roboAppend = `<a href="#" rel="tip" 
+      title="${roboNPC[i].first_name} ${roboNPC[i].last_name}
+      barcode:(${roboNPC[i].areacode}) ${roboNPC[i].barcode}
+      transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
+      location: ${roboNPC[i].location}
+      eyes: ${roboNPC[i].eye_feature}
+      hair: ${roboNPC[i].hair_type} 
+      mouth: ${roboNPC[i].mouth}
+      nose: ${roboNPC[i].nose}
+      color: ${roboNPC[i].common_color} "
+      ><img src='${roboImage}' alt='robo suspect' width='100px' height='100px' /></a>`
       $("#robot-display").append(roboAppend);
     } else {
       console.log("robo undefined or null");
     }
+
+
+    
   }
 }
 
