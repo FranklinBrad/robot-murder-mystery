@@ -189,6 +189,21 @@ function getRoboImage(roboNPC) {
     } else {
       console.log("robo undefined or null");
     }
+
+
+    var roboQtip = `<a href="#" rel="tip" 
+title="${roboNPC[i].first_name} ${roboNPC[i].last_name},
+barcode:(${roboNPC[i].areacode}) ${roboNPC[i].barcode},
+color:  example,
+model:  example,
+transportation: example,
+location: ${roboNPC[i].location},
+eyes: ${roboNPC[i].eye_feature},
+hair: ${roboNPC[i].hair_type} ,
+mouth: ${roboNPC[i].mouth},
+nose: ${roboNPC[i].nose},
+color: ${roboNPC[i].common_color} "
+></a>`
   }
 }
 
