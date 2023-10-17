@@ -172,7 +172,7 @@ function buildRoboArr() {
 }
 
 //Calls for buildRoboArr function 
-buildRoboArr()
+// buildRoboArr()
 
 
 // function get to set random Robo images to img src attr and show oil spill death
@@ -271,4 +271,19 @@ $(".container").on("click", ".robotImg", function() {
   $(this).css('border', "solid 5px black"); 
 });
 
+$('#play').on('click', function(){
+  $('#npc-main').css('display', "block");
+  buildRoboArr();
+  $(this).css('display', 'none')
+})
 
+$('#player-choice').on('click', 'button', function(){
+  console.log($(this))
+  if ($(this) === '#get-witness' ){
+    console.log('we will call the get-witness func');
+  } else if ($(this).id === 'accuse' ){
+    console.log('call accuse funct');
+  } else {
+    console.log('clicked somewhere wrong');
+  }
+})
