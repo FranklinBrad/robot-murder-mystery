@@ -168,7 +168,6 @@ function buildRoboArr() {
     //calls image when data fetched
     .then(function (finalImage) {
       //call RoboImage function
-      console.log(finalImage);
       getRoboImage(roboNPC);
     })
 }
@@ -191,7 +190,8 @@ function getRoboImage(roboNPC) {
       } else if (roboNPC[i].transportation === "Hoverboard"){
         roboNPC[i].model = ""
       }
-      var roboAppend = `<a href="#" rel="tip" 
+      var roboAppend = `<div id='suspect${i}' class='card card-block' style='width: 150px'>
+      <a href="#" rel="tip" 
       title="${roboNPC[i].first_name} ${roboNPC[i].last_name}
       barcode:(${roboNPC[i].areacode}) ${roboNPC[i].barcode}
       transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
@@ -200,8 +200,10 @@ function getRoboImage(roboNPC) {
       hair: ${roboNPC[i].hair_type} 
       mouth: ${roboNPC[i].mouth}
       nose: ${roboNPC[i].nose}
-      color: ${roboNPC[i].common_color} "
-      ><img src='${roboImage}' alt='robo suspect' width='100px' height='100px' /></a>`
+      color: ${roboNPC[i].common_color}">
+      <img src='${roboImage}' alt='robo suspect' width='100px' height='100px'class='l-1' />
+      </a>
+      </div>`
       $("#robot-display").append(roboAppend);
     } else {
       console.log("robo undefined or null");
@@ -216,6 +218,16 @@ function getRoboImage(roboNPC) {
 
     
   }
+  var deathAppend = `<img src='./assets/img/event/oilsplash.png' width='100px' height='100px' class='l-2'/>`
+  $('#suspect5').append(deathAppend);
+  $('#suspect19').append(deathAppend);
+  $('#suspect1').append(deathAppend);
+  $('#suspect3').append(deathAppend);
+  $('#suspect15').append(deathAppend);
+  
+  console.log (deathAppend)
+  console.log(`#suspect${5}`)
+  console.log(roboAppend)
 }
 
 
