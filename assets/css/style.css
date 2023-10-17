@@ -31,7 +31,7 @@ header {
 
 
 #splash {
-  background-image: url("../img/murder-robots-group.jpg");
+  background-image: url("../img/backgrounds/murder-robots-group.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -47,7 +47,7 @@ header {
 
 section {
   background-color: white;
-  /* border: solid 2px red; */
+
   padding: 1rem;
   border: solid 2px #323232;
   border-radius: 1rem;
@@ -56,6 +56,10 @@ section {
 
 main {
  /* background-color: #2C2416; */
+}
+
+h1 {
+  margin-bottom: 2rem;
 }
 
 h1,
@@ -144,6 +148,62 @@ h1 {
   z-index: 30;
 }
 
+/* Start of intential npc.html stylings */
+
 #npc-main {
   display: none;
+}
+
+#npc-body{
+  background-image: url('../img/backgrounds/bg1-try-3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+
+.content
+ {
+  background-color: rgba(128, 128, 128, 0.439);
+}
+
+
+#get-witness,
+#accuse,
+#play-npc {
+  background-color: rgba(128, 128, 128, 0.439);
+  border: 2px solid #323232;
+  box-shadow: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #14100E;
+}
+
+#get-witness:hover,
+#accuse:hover,
+#play-npc:hover {
+  color:#ffcf1d;
+  border: 2px solid #ffcf1d;
+  background-color: #575555;
+}
+
+footer {
+  background-color: rgba(128, 128, 128, 0.439);
+  border: 2px solid #323232;
+  color: #14100E;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+#player-choice {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
 }
