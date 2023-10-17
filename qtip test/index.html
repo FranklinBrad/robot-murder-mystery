@@ -27,6 +27,13 @@ common_color: example "
 ><img src="./r100.png" alt="roboimg" class="tip" /></a>
 <a href="#" rel="clue" title="They got to work on a hover board" class="clue">Witness Statement</a>
 <a href="#" class="spot_quote">Statement2</a>
+<script>
+    $(function () {
+  $("img").click(function() {
+    $(this).css('border', "solid 5px black"); 
+  });
+});
+</script>
 
 
 <button onclick="sound()">Play sound</button>

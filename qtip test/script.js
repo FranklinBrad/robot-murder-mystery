@@ -30,3 +30,9 @@ function sound() {
   var snd = new Audio("./thunder.mp3"); //wav is also supported
   snd.play(); //plays the sound
 }
+
+$(function () {
+  $("img").click(function() {
+    $(this).css('border', "solid 5px black"); 
+  });
+});

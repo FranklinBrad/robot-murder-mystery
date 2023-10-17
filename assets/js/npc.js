@@ -206,11 +206,18 @@ function getRoboImage(roboNPC) {
     } else {
       console.log("robo undefined or null");
     }
+    //adds border around images
+    $(function () {
+      $("img").click(function() {
+        $(this).css('border', "solid 5px black"); 
+      });
+    });
 
 
     
   }
 }
+
 
 
 
