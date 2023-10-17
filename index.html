@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- link to bootstrap -->
-   <link
-   rel="stylesheet"
-   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-  />
+  <!-- link to bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <!-- link to custom fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +14,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>Robo Murder Mystery</title>
 </head>
+
 <body>
   <div id="imagesection">
     <main>
@@ -23,7 +22,7 @@
         <header>
           <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
-              
+
               <a class="navbar-brand" href="#origin-story">
                 Credits
                 <!-- <img src="./assets/img/reaper.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
@@ -32,24 +31,24 @@
                 Scoreboard
                 <!-- <img src="./assets/img/reaper.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
               </a>
-  
+
               <a class="navbar-brand" href="#about">
                 Credits
                 <!-- <img src="./assets/img/reaper.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
               </a>
-  
+
               <a class="navbar-brand" href="#game-rules">
                 Game Rules
                 <!-- <img src="./assets/img/reaper.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
               </a>
-  
+
             </div>
-          </nav>          
+          </nav>
         </header>
         <div id="title-play">
           <h1>Robo Murder Mystery</h1>
           <a id="play" href="./npc.html">
-            <button id="play-btn" >Play</button>
+            <button id="play-btn">Play</button>
           </a>
         </div>
       </div>
@@ -57,29 +56,50 @@
     <div id="sections">
       <section id="origin-story">
         <h2>Origin Story</h2>
-        <p>The year is 2156. TIME Magazine has named “The Robot” person of the year. Every workplace, factory and retail setting is filled with robots working for society. The robots have been working day and night to finish production on the newest self-driving hoverboard. One particular Tuesday, the robots were working on finalizing the paint design for the newest F1473 Hoverboard Premium Ultimate Model when all of the sudden ….</p>
+        <p>The year is 2156. TIME Magazine has named “The Robot” person of the year. Every workplace, factory and retail
+          setting is filled with robots working for society. The robots have been working day and night to finish
+          production on the newest self-driving hoverboard. One particular Tuesday, the robots were working on
+          finalizing the paint design for the newest F1473 Hoverboard Premium Ultimate Model when all of the sudden ….
+        </p>
       </section>
       <section id="game-rules">
         <h2>Game Rules</h2>
-        <p>You've been called in for Detective work by the International Galactic Robot Department to solve the case. Ever since the world created a new population of Bots, there needed to be structure and order. You have been assigned to determine which Robot committed the crime based on witness clues provided. 
+        <p>You've been called in for Detective work by the International Galactic Robot Department to solve the case.
+          Ever since the world created a new population of Bots, there needed to be structure and order. You have been
+          assigned to determine which Robot committed the crime based on witness clues provided. To win the game you
+          must select the correct robo-attacker. Score is based on how many robots are left after you have selected the
+          robo-attacker. The more robots left, the higher your score will be.
+
+          To begin the game, press the PLAY button. You will be directed to another page where the
+          game will occur. During the game your mission to select the robot who committed the crime. You will be shown a
+          series of pictures of different robots. When you hover over each robot with your mouse, it will provide a
+          speech bubble with specific information about them such as their name, physical description, etc.
+
+          Each round you are able to select another witness statement or guess the robo-attacker. If you select a
+          witness statement, it will give you more information on who the robo-attacker is in order to guess correctly.
+          If you choose to guess the robo-attacker, then the game will tell you if you are correct or incorrect (the
+          robot will be highlighted with a black border). If you are incorrect, an oil splash will fade over the robot's
+          picture as well as the grim reaper will fade onto the screen. If you are correct, you have won the game.
+
         </p>
       </section>
       <section id="about">
         <h2>Credits</h2>
-        <p>Laura Volmer - Commander Supreme - whom without, the entire organization would have imploded.<br>
+        <p>Laura Vollmer - Commander Supreme (Project Leader) - whom without, the entire organization would have
+          imploded.<br>
           Arthur Henningfield - Gamer Extraordinaire - super coder and original game idea.<br>
-          Frankie Bradley - Qtip Wizard<br> 
-          Kurt Wensmann - Splash Page<br>
-          Gary - Our Mr. Miyagi - threatened litigation if not creditted
+          Frankie Bradley - Qtip Wizard - talented, new game technology implementer. <br>
+          Kurt Wensmann - Splash Page Genius - visual design maestro and debugging specialist. <br>
+          Gary - Our Mr. Miyagi - threatened litigation if not credited.
         </p>
       </section>
-      
+
       <section id="scoreboard">
-            <!-- Button trigger modal -->
+        <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           View High Scores
         </button>
-        
+
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -98,16 +118,21 @@
               </div>
             </div>
           </div>
-        </div>      
-      </section> 
+        </div>
+      </section>
     </div>
 
 
 
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
