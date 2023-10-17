@@ -210,6 +210,7 @@ function getRoboImage(roboNPC) {
     }
     //adds border around images
     $(function () {
+      
       $("img").click(function() {
         $(this).css('border', "solid 5px black"); 
       });
