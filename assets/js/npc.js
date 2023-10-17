@@ -207,6 +207,19 @@ function getRoboImage(roboNPC) {
     } else {
       console.log("robo undefined or null");
     }
+    //adds border around images
+    $(function () {
+      for (let i = 0; i < roboImage.length; i++) {
+       
+      }
+      
+      $("img").click(function() {
+        $(this).css('border', "solid 5px black"); 
+      });
+    });
+
+
+    
   }
   murderBot = roboNPC[Math.floor(Math.random() * npcTotal)]
   console.log(murderBot);
@@ -252,4 +265,5 @@ function witnessStatementFunc() {
   }
 }
 console.log(murderBot);
+
 
