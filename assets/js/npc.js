@@ -208,13 +208,13 @@ function getRoboImage(roboNPC) {
       console.log("robo undefined or null");
     }
     //adds border around images
-   
- 
-    
-    
 
 
-    
+
+
+
+
+
   }
   murderBot = roboNPC[Math.floor(Math.random() * npcTotal)]
   console.log(murderBot);
@@ -261,27 +261,27 @@ function witnessStatementFunc() {
 }
 console.log(murderBot);
 
-$(".container").on("click", ".robotImg", function() {
+$(".container").on("click", ".robotImg", function () {
   console.log("hello")
   for (let i = 0; i < roboNPC.length; i++) {
-   $(this).siblings(`#suspect${roboNPC[i].id}`).css('border', "none");
-   console.log($(this).siblings(`suspect${roboNPC[i].id}`))
-   console.log(this)
+    $(this).siblings(`#suspect${roboNPC[i].id}`).css('border', "none");
+    console.log($(this).siblings(`suspect${roboNPC[i].id}`))
+    console.log(this)
   }
-  $(this).css('border', "solid 5px black"); 
+  $(this).css('border', "solid 5px black");
 });
 
-$('#play').on('click', function(){
+$('#play').on('click', function () {
   $('#npc-main').css('display', "block");
   buildRoboArr();
   $(this).css('display', 'none')
 })
 
-$('#player-choice').on('click', 'button', function(){
+$('#player-choice').on('click', 'button', function () {
   console.log($(this))
-  if ($(this) === '#get-witness' ){
+  if ($(this) === '#get-witness') {
     console.log('we will call the get-witness func');
-  } else if ($(this).id === 'accuse' ){
+  } else if ($(this).id === 'accuse') {
     console.log('call accuse funct');
   } else {
     console.log('clicked somewhere wrong');
