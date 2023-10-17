@@ -7,6 +7,9 @@ var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0`
 //Array to store final Robo NPC in 
 var roboNPC = []
 
+// make variable murderBot an array
+var murderBot = []
+
 //These variables should never be modified so they are set as a const
 const npcDescArr = [
   { "avatar": "r1.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange" },
@@ -155,12 +158,8 @@ function buildRoboArr() {
         //Each time the loop runs this takes itself and adds the above tempLine to the array.
         roboNPC = [...roboNPC, ...tempLine]
       }
-      var murderBot = roboNPC[Math.floor(Math.random() * npcTotal)]
-      console.log(murderBot)
-
-      console.log(roboNPC)
-      //When the fetch is done this returns roboNPC to the function
-      return roboNPC, murderBot;
+      //When the fetch is done this returns roboNPC and murderBot to the function
+      return roboNPC;
 
     })
     //Returns roboNPC to where the function was originally called.
@@ -176,7 +175,7 @@ function buildRoboArr() {
 buildRoboArr()
 
 
-// function get to set random Robo images to img src attr
+// function get to set random Robo images to img src attr and show oil spill death
 function getRoboImage(roboNPC) {
   console.log(roboNPC[0].avatar);
   // for loop to run through array based on length
@@ -184,10 +183,10 @@ function getRoboImage(roboNPC) {
     // if else to make sure that the values are not null or undefined
     if (roboNPC[i].avatar !== null || roboNPC[i].avatar !== undefined) {
       var roboImage = "./assets/img/robothugs/" + roboNPC[i].avatar;
-      if (roboNPC[i].transportation === "Foot"){
-         roboNPC[i].model = ""
-         roboNPC[i].color = ""
-      } else if (roboNPC[i].transportation === "Hoverboard"){
+      if (roboNPC[i].transportation === "Foot") {
+        roboNPC[i].model = ""
+        roboNPC[i].color = ""
+      } else if (roboNPC[i].transportation === "Hoverboard") {
         roboNPC[i].model = ""
       }
       var roboAppend = `<div id='suspect${i}' class='card card-block' style='width: 150px'>
@@ -222,18 +221,49 @@ function getRoboImage(roboNPC) {
 
     
   }
+  murderBot = roboNPC[Math.floor(Math.random() * npcTotal)]
+  console.log(murderBot);
+  witnessStatementFunc()
+
   var deathAppend = `<img src='./assets/img/event/oilsplash.png' width='100px' height='100px' class='l-2'/>`
   $('#suspect5').append(deathAppend);
   $('#suspect19').append(deathAppend);
   $('#suspect1').append(deathAppend);
   $('#suspect3').append(deathAppend);
   $('#suspect15').append(deathAppend);
-  
-  console.log (deathAppend)
+
+  console.log(deathAppend)
   console.log(`#suspect${5}`)
   console.log(roboAppend)
 }
 
+//witness statement array 
+const witnessStatements = [
+  { areacode: `I was able to see a text message from the robo-attacker on the his or her phone. It looks like they were trying to order some new widgets from Maryland. The area code was ${murderBot.areacode}.` },
+  { barcode: `Being a robot you have excellent memory. I knew I wouldn't forget the last four digits of the barcode from the call he or she was getting. It was ${murderBot.barcode}` },
+  { color: `The robo-attacker left the scene in a ${murderBot.color} vehicle` },
+  { model: `The vehicle's model was ${murderBot.model}` },
+  { transportation: `He or she drove a ${murderBot.transportation}` },
+  { location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}. Ragnar Robot always powers down during work (i.e. takes a nap), but I dont think it was him this time.` },
+  { eyefeature: "Beep! Beep! I knew he had atleast two eyes because most robots around here only have a visor." },
+  { hair_type: "Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of antenna" },
+  { mouth: `I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had ${murderBot.mouth}.` },
+  { nose: "Beep beep! The robo-sandwich was a delicacy in the Bot World filled with the finest bolts. I saw the robo-attacker eating one earlier in the day, he must have exquisite taste with his ability to use his nose to smell. " },
+  { weapon: `I saw the robo-attacker with my own eyes - their ${murderBot.weapon} blinded me in the light. My visor vision focused and analyzed the weapon right away.` }
+]
 
+//witness statement function
+function witnessStatementFunc() {
+  console.log(murderBot)
+
+  var currentWitness = [Math.floor(Math.random() * npcTotal)]
+  //loop to run through the array and put one up on the website each time
+  for (var x = 0; x < witnessStatements.length; x++) {
+    console.log(witnessStatements[x]);
+    var witnessAppend = `${witnessStatements[x]}`;
+    $("#whoDidIt").append(witnessAppend);
+  }
+}
+console.log(murderBot);
 
 
