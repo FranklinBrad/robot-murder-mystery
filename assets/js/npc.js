@@ -170,6 +170,11 @@ function buildRoboArr() {
       //call RoboImage function
       getRoboImage(roboNPC);
     })
+
+    // calls murderBot information to put into witness statements
+    .then(function () {
+      witnessStatementFunc(murderBot);
+    })
 }
 
 //Calls for buildRoboArr function 
@@ -222,10 +227,29 @@ function getRoboImage(roboNPC) {
 }
 
 
-//witness statement array (example)
-const witnessStatement = [
-  { areacode: "I was able to see a text message from the robo-attacker on the robo-dead phone. It looks like they were trying to order some new widgets from Maryland. The area code was ____." },
-  { location: "Beep boop! I was shocked to hear a loud THUMP in the LOCATION. Ragnar Robot always powers down during work (i.e. takes a nap), but I don’t think it was him this time." },
-  { weapon: "I saw the robo-attacker with my own eyes - their BLANK blinded me in the light. My visor vision focused and analyzed the weapon right away." }
-]
+//witness statement function
+function witnessStatementFunc() {
 
+  //witness statement array (example)
+  const witnessStatements = [
+    { areacode: `I was able to see a text message from the robo-attacker on the his or her phone. It looks like they were trying to order some new widgets from Maryland. The area code was ${roboNPC[i].areacode}.` },
+    { barcode: `Being a robot you have excellent memory. I knew I wouldn't forget the last four digits of the barcode from the call he or she was getting. It was ${roboNPC[i].barcode}` },
+    { color: "The robo-attacker left the scene in a __ vehicle" },
+    { model: "The vehicle's model was ___" },
+    { transportation: "He or she drove a ____" },
+    { location: "Beep boop! I was shocked to hear a loud THUMP in the LOCATION. Ragnar Robot always powers down during work (i.e. takes a nap), but I dont think it was him this time." },
+    { eyefeature: "Beep! Beep! I knew he had atleast two eyes because most robots around here only have a visor." },
+    { hair_type: "Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of antenna" },
+    { mouthNoTeeth: "I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had no metal teeth." },
+    { mouthTeeth: "It was odd that their teeth looked like piano keys. Most Bots did not have teeth these days." },
+    { nose: "Beep beep! The robo-sandwich was a delicacy in the Bot World filled with the finest bolts. I saw the robo-attacker eating one earlier in the day, he must have exquisite taste with his ability to smell as well. " },
+    { weapon: "I saw the robo-attacker with my own eyes - their BLANK blinded me in the light. My visor vision focused and analyzed the weapon right away." },
+  ]
+
+  for (var x = 0; x < witnessStatements.length; x++) {
+    console.log(witnessStatement[x]);
+  }
+}
+
+//calling witness statement function
+witness()
