@@ -7,6 +7,9 @@ var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0`
 //Array to store final Robo NPC in 
 var roboNPC = []
 
+// make variable murderBot an array
+var murderBot = []
+
 //These variables should never be modified so they are set as a const
 const npcDescArr = [
   { "avatar": "r1.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange" },
@@ -155,12 +158,8 @@ function buildRoboArr() {
         //Each time the loop runs this takes itself and adds the above tempLine to the array.
         roboNPC = [...roboNPC, ...tempLine]
       }
-      var murderBot = roboNPC[Math.floor(Math.random() * npcTotal)]
-      console.log(murderBot)
-
-      console.log(roboNPC)
       //When the fetch is done this returns roboNPC and murderBot to the function
-      return roboNPC, murderBot;
+      return roboNPC;
 
     })
     //Returns roboNPC to where the function was originally called.
@@ -169,12 +168,6 @@ function buildRoboArr() {
     .then(function (finalImage) {
       //call RoboImage function
       getRoboImage(roboNPC);
-    })
-
-    // calls fetched murderBot information to put into witness statements
-    .then(function (murder) {
-      //calls witnessStatementFunc with murderBot fetched info
-      witnessStatementFunc(murderBot);
     })
 }
 
@@ -215,6 +208,10 @@ function getRoboImage(roboNPC) {
       console.log("robo undefined or null");
     }
   }
+  murderBot = roboNPC[Math.floor(Math.random() * npcTotal)]
+  console.log(murderBot);
+  witnessStatementFunc()
+
   var deathAppend = `<img src='./assets/img/event/oilsplash.png' width='100px' height='100px' class='l-2'/>`
   $('#suspect5').append(deathAppend);
   $('#suspect19').append(deathAppend);
@@ -231,29 +228,28 @@ function getRoboImage(roboNPC) {
 const witnessStatements = [
   { areacode: `I was able to see a text message from the robo-attacker on the his or her phone. It looks like they were trying to order some new widgets from Maryland. The area code was ${murderBot.areacode}.` },
   { barcode: `Being a robot you have excellent memory. I knew I wouldn't forget the last four digits of the barcode from the call he or she was getting. It was ${murderBot.barcode}` },
-  { color: "The robo-attacker left the scene in a __ vehicle" },
-  { model: "The vehicle's model was ___" },
-  { transportation: "He or she drove a ____" },
-  { location: "Beep boop! I was shocked to hear a loud THUMP in the LOCATION. Ragnar Robot always powers down during work (i.e. takes a nap), but I dont think it was him this time." },
+  { color: `The robo-attacker left the scene in a ${murderBot.color} vehicle` },
+  { model: `The vehicle's model was ${murderBot.model}` },
+  { transportation: `He or she drove a ${murderBot.transportation}` },
+  { location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}. Ragnar Robot always powers down during work (i.e. takes a nap), but I dont think it was him this time.` },
   { eyefeature: "Beep! Beep! I knew he had atleast two eyes because most robots around here only have a visor." },
   { hair_type: "Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of antenna" },
-  { mouthNoTeeth: "I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had no metal teeth." },
-  { mouthTeeth: "It was odd that their teeth looked like piano keys. Most Bots did not have teeth these days." },
+  { mouth: `I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had ${murderBot.mouth}.` },
   { nose: "Beep beep! The robo-sandwich was a delicacy in the Bot World filled with the finest bolts. I saw the robo-attacker eating one earlier in the day, he must have exquisite taste with his ability to use his nose to smell. " },
-  { weapon: `I saw the robo-attacker with my own eyes - their ${murderBot.weapon} blinded me in the light. My visor vision focused and analyzed the weapon right away.` },
+  { weapon: `I saw the robo-attacker with my own eyes - their ${murderBot.weapon} blinded me in the light. My visor vision focused and analyzed the weapon right away.` }
 ]
 
 //witness statement function
-function witnessStatementFunc(murderBot) {
+function witnessStatementFunc() {
   console.log(murderBot)
 
+  var currentWitness = [Math.floor(Math.random() * npcTotal)]
   //loop to run through the array and put one up on the website each time
   for (var x = 0; x < witnessStatements.length; x++) {
-    console.log(witnessStatement[1]);
-    var witnessAppend = `${witnessStatements[1]}`;
+    console.log(witnessStatements[x]);
+    var witnessAppend = `${witnessStatements[x]}`;
     $("#whoDidIt").append(witnessAppend);
   }
 }
+console.log(murderBot);
 
-//calling witness statement function
-witnessStatementFunc(murderBot)
