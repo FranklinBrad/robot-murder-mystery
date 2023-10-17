@@ -189,7 +189,7 @@ function getRoboImage(roboNPC) {
       } else if (roboNPC[i].transportation === "Hoverboard") {
         roboNPC[i].model = ""
       }
-      var roboAppend = `<div id='suspect${i}' class='card card-block' style='width: 150px'>
+      var roboAppend = `<div id='suspect${i}' class='robotImg card card-block' style='width: 150px'>
       <a href="#" rel="tip" 
       title="${roboNPC[i].first_name} ${roboNPC[i].last_name}
       barcode:(${roboNPC[i].areacode}) ${roboNPC[i].barcode}
@@ -207,6 +207,14 @@ function getRoboImage(roboNPC) {
     } else {
       console.log("robo undefined or null");
     }
+    //adds border around images
+   
+ 
+    
+    
+
+
+    
   }
   murderBot = roboNPC[Math.floor(Math.random() * npcTotal)]
   console.log(murderBot);
@@ -252,4 +260,15 @@ function witnessStatementFunc() {
   }
 }
 console.log(murderBot);
+
+$(".container").on("click", ".robotImg", function() {
+  console.log("hello")
+  for (let i = 0; i < roboNPC.length; i++) {
+   $(this).siblings(`#suspect${roboNPC[i].id}`).css('border', "none");
+   console.log($(this).siblings(`suspect${roboNPC[i].id}`))
+   console.log(this)
+  }
+  $(this).css('border', "solid 5px black"); 
+});
+
 
