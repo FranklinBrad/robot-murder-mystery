@@ -16,9 +16,15 @@
 let highScores = [];
 
 
-const myModal = document.getElementById('myModal')
+const myModal = document.getElementById('scoreboard')
 const myInput = document.getElementById('myInput')
 
 myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
+
+
+
+
+
+

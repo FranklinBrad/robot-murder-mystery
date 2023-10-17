@@ -1,19 +1,34 @@
-/* <div id="splash">
-<h1>Robo Murder Mystery</h1>
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-      Bootstrap
-    </a>
-  </div>
-</nav>
+#testcolors {
+  /* position: fixed; */
 
-</div>
-<main>
-<section id="about">About & Credit</section>
-<section id="game-rules">Game Rules</section>
-<section id="scoreboard"> */
+  color: #14100E; 
+  color: #2C2416; 
+  color: #575555;
+  color: #454444;
+  color: #323232;	
+  color: #161616;	
+  color: #ffcf1d;	
+
+ 
+}
+
+* {
+  font-family: 'Orbitron', sans-serif;
+
+  /* font-family: 'Tilt Neon', sans-serif; */
+}
+
+header {
+  margin: 2rem;
+}
+.navbar-brand {
+  color: #14100E;
+}
+
+.navbar-brand:hover {
+  color: #ffcf1d;
+}
+
 
 #splash {
   background-image: url("../img/murder-robots-group.jpg");
@@ -21,19 +36,36 @@
   background-size: cover;
   height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-#splash,
+#sections {
+  padding: 1rem;
+  background-color: rgba(128, 128, 128, 0.439);
+}
+
 section {
-  border: solid 2px red;
-  padding: 2rem;
+  background-color: white;
+  /* border: solid 2px red; */
+  padding: 1rem;
+  border: solid 2px #323232;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+main {
+ /* background-color: #2C2416; */
 }
 
 h1,
 nav,
 .modal {
-  border: solid 2px orange;
+  background-color: rgba(128, 128, 128, 0.439);
 
+  border: solid 2px #454444;
+  text-align: center;
+  border-radius: 1rem;
 }
 
 #modal {
@@ -50,7 +82,52 @@ main {
 }
 
 h2 {
-  color: white;
+  color: #14100E;
   text-align: center;
-  padding: 2rem;
+  /* padding: 2rem; */
+}
+
+#play-btn {
+  background-color: rgba(128, 128, 128, 0.439);
+  box-shadow: none;
+  border: 2px solid #14100E;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: 20px;
+}
+
+#play-btn:hover {
+  color: #ffcf1d;
+  border: solid 2px #ffcf1d;
+
+}
+
+#title-play {
+ 
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  margin-top: 40vh;
+  align-items: center;
+  align-content: center;
+  text-decoration: none;
+}
+
+h1 {
+  padding: 1rem;
+  background-color: rgba(128, 128, 128, 0.439);
+  color: #14100E;
+}
+
+.btn-primary,
+.btn-primary:focus {
+  background-color: #575555;
+  border: 2px solid #323232;
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  color: #ffcf1d;
+  border: 2px solid #ffcf1d;
+  background-color: #575555;
 }
