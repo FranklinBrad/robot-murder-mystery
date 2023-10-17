@@ -176,7 +176,7 @@ function buildRoboArr() {
 buildRoboArr()
 
 
-// function get to set random Robo images to img src attr
+// function get to set random Robo images to img src attr and show oil spill death
 function getRoboImage(roboNPC) {
   console.log(roboNPC[0].avatar);
   // for loop to run through array based on length
@@ -184,10 +184,10 @@ function getRoboImage(roboNPC) {
     // if else to make sure that the values are not null or undefined
     if (roboNPC[i].avatar !== null || roboNPC[i].avatar !== undefined) {
       var roboImage = "./assets/img/robothugs/" + roboNPC[i].avatar;
-      if (roboNPC[i].transportation === "Foot"){
-         roboNPC[i].model = ""
-         roboNPC[i].color = ""
-      } else if (roboNPC[i].transportation === "Hoverboard"){
+      if (roboNPC[i].transportation === "Foot") {
+        roboNPC[i].model = ""
+        roboNPC[i].color = ""
+      } else if (roboNPC[i].transportation === "Hoverboard") {
         roboNPC[i].model = ""
       }
       var roboAppend = `<div id='suspect${i}' class='card card-block' style='width: 150px'>
@@ -215,11 +215,17 @@ function getRoboImage(roboNPC) {
   $('#suspect1').append(deathAppend);
   $('#suspect3').append(deathAppend);
   $('#suspect15').append(deathAppend);
-  
-  console.log (deathAppend)
+
+  console.log(deathAppend)
   console.log(`#suspect${5}`)
   console.log(roboAppend)
 }
 
 
+//witness statement array (example)
+const witnessStatement = [
+  { areacode: "I was able to see a text message from the robo-attacker on the robo-dead phone. It looks like they were trying to order some new widgets from Maryland. The area code was ____." },
+  { location: "Beep boop! I was shocked to hear a loud THUMP in the LOCATION. Ragnar Robot always powers down during work (i.e. takes a nap), but I don’t think it was him this time." },
+  { weapon: "I saw the robo-attacker with my own eyes - their BLANK blinded me in the light. My visor vision focused and analyzed the weapon right away." }
+]
 
