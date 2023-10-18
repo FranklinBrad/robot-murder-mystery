@@ -1,19 +1,32 @@
-//How many NPC's will be in the game (1 Always dies so if you want 20 to be a part of the game you need to start with 21)
+// How many NPC's will be in the game (1 Always dies so if you want 20 to be a part of the game you need to start with 21)
 var npcTotal = 21
-//RequestURL to make an API pull from mockaroo. 
-var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0`
-//Array to store final Robo NPC in 
+
+// RequestURL to make an API pull from mockaroo. 
+//key=d862e8b0 or key=76436720 - Cost effective
+var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=76436720`
+
+// Array to store final Robo NPC in 
 var roboNPC = []
-// make variable murderBot an array
+
+// Make variable murderBot an array
 var murderBot = []
-//the actual statements used for the game
+
+// The actual statements used for the game
 var witnessStatements = []
-//statement pool that deteriorates as the game goes on
+
+// Statement pool that deteriorates as the game goes on
 var statementArr = []
-// accuse selector
+
+// Accuse selector
 var accuseSelected = ""
+
+// Player score which will be later set to amount of survivors
 var playerScore = 0
+
+// highScores Array that is used to pull and push highscores to local storage.
 var highScores = [];
+
+// playerName reflects what is typed in the text box and is used for the highscore board.
 var playerName = '';
 
 //These variables should never be modified so they are set as a const
@@ -121,28 +134,32 @@ const npcDescArr = [
   {"avatar": "r101.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Gray"}
 ]
 
-//Function to grab 1 random avatar with data
+// Function to grab 1 random avatar with data
 function generateRandomDesc() {
   var tempRand = npcDescArr[Math.floor(Math.random() * npcDescArr.length)]
   return tempRand;
 }
 
+// Build the robot NPC's for the game.
 function buildRoboArr() {
-  //Fetch request to grab mockata
+
+  //Fetch request to grab mockdata from Mockaroo using requestUrl global Variable
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
 
-      //clears the roboNPC array
+      // Clears the roboNPC array so we can create a fresh game.
       roboNPC = []
-      //Loop to build the array of Full Robo NPC's containing data from both mockaroo and hardcoded desc array uses NPC total from the top created variable
+
+      // Loop to build the array of Full Robo NPC's containing data from both mockaroo and hardcoded desc array uses NPC total from the top created variable
       for (i = 0; i < npcTotal; i++) {
+
         // This runs the generateRandomDesc() function to pull 1 of the lines from the npcDescArr to be used below as ranDesc
         var ranDesc = generateRandomDesc();
 
-        //This builds a single variable line that contains all the data for a single NPC in the array
+        // This builds a single variable line that contains all the data for a single NPC in the array
         var tempLine = [{
           'id': data[i].id,
           'first_name': data[i].first_name,
@@ -161,41 +178,45 @@ function buildRoboArr() {
           'common_color': ranDesc.common_color
         }
         ]
-        //Each time the loop runs this takes itself and adds the above tempLine to the array.
+
+        // Each time the loop runs this takes itself and adds the above tempLine to the array.
         roboNPC = [...roboNPC, ...tempLine]
       }
-      //When the fetch is done this returns roboNPC and murderBot to the function
+
+      // Returns roboNPC to where the function was originally called.
       return roboNPC;
-
     })
-    //Returns roboNPC to where the function was originally called.
 
-    //calls image when data fetched
+
+    // Calls image when data fetched
     .then(function (finalImage) {
-      //call RoboImage function
+
+      // Call RoboImage function
       getRoboImage(roboNPC);
     })
 }
 
-//Calls for buildRoboArr function 
-// buildRoboArr()
 
-
-// function get to set random Robo images to img src attr and show oil spill death
+// Function get to set random Robo images to img src attr and show oil spill death
 function getRoboImage(roboNPC) {
-  // for loop to run through array based on length
+  // For loop to run through array based on length
   for (var i = 0; i < roboNPC.length; i++) {
-    // if else to make sure that the values are not null or undefined
+    // If else to make sure that the values are not null or undefined
     if (roboNPC[i].avatar !== null || roboNPC[i].avatar !== undefined) {
       var roboImage = "./assets/img/robothugs/" + roboNPC[i].avatar;
+
+      // This if statement checks to see if the mode of transportation is Foot or Hoverboard and if it is, the "unused" descriptors are cleared from that robot
       if (roboNPC[i].transportation === "Foot") {
         roboNPC[i].model = ""
         roboNPC[i].color = ""
       } else if (roboNPC[i].transportation === "Hoverboard") {
         roboNPC[i].model = ""
       }
-      //I broke the Qtip when I added in the ID above the title, Title is actually a structual part of the Qtip 
-      var roboAppend = `<div id='suspect${i}' class='robotImg card card-block' style='width: 125px'>
+
+      // This appends the container with boxes to put the robobts in. div id='suspect${i} is giving each robot a unique specifier for alter functionality with selecting the robots.
+      // The anchor a href="#" rel ="tip" is simply to add the next lines as a QTip so users are able to view the robots more detailed information by hovering them with the mouse.
+      //  
+      var roboAppend = `<div id='suspect${i}' class='robotImg card card-block content' style='width: 125px'>
       <a href="#" rel="tip" 
       
       title=" ${roboNPC[i].first_name} ${roboNPC[i].last_name}
@@ -217,7 +238,11 @@ function getRoboImage(roboNPC) {
     }
     //adds border around images
 
+
+
   }
+  var sceneText = (`<div class='card witness-statement content'>Detective ${playerName}, you've been called in because there was a murder at the Hoverboard factory.  [Insert intial robotDeath Name] was found in a puddle of its own hydraulic fluid disabled with multiple blaster gun holes.  Can you help us discover the culprit of the heinous act....</div>`)
+  $('#scene').append(sceneText);
   murderBotID = [Math.floor(Math.random() * npcTotal)]
   murderBot = roboNPC[murderBotID]
   roboNPC.splice(murderBotID, 1)
@@ -225,6 +250,31 @@ function getRoboImage(roboNPC) {
   createWitnessStatements(murderBot)
   witnessStatementFunc()
 }
+
+
+function addInfoBox(i){
+console.log('addinfo')
+  var updateSmallInfo = `Name: ${roboNPC[i].first_name} ${roboNPC[i].last_name}
+    Id: ${roboNPC[i].id}
+    Barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
+    Transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
+    Location: ${roboNPC[i].location}
+    Eyes: ${roboNPC[i].eye_feature}
+    Hair: ${roboNPC[i].hair_type} 
+    Mouth: ${roboNPC[i].mouth}
+    Nose: ${roboNPC[i].nose}
+    Color: ${roboNPC[i].common_color}`;
+    
+console.log (updateSmallInfo + "Small Info Update")
+ $('#small-info-div')[0].textContent = updateSmallInfo
+ console.log($('#small-info-div'))
+
+//  <div class="small-info"></div>
+
+}
+
+
+
 
 //Created a call function to update the witness staements and made it a global variable that gets changed when the function is called. It was having a hard time being passed around as a constant and creating it on the global scale as a constant was making it so it didn't have proper information from the murderbot. Also later on this would cause problems in the second game since we would not be able to update it for the new murderbot.
 // in the barcode pull the string literal is now ${String(murderBot.barcode).substr(-1)} which turns the .barcode into a string and then substr(-1) counts from the end pulling the last character out giving us the last number.
@@ -247,12 +297,10 @@ witnessStatements = [
   //This if set checks for having a foot as transportation then removing irrelevant witness statements, and then checking for hoverboard
    if (murderBot.transportation === "Foot"){
     statementArr.splice(statementArr.indexOf('model'), 1)
-    statementArr.splice(statementArr.indexOf('color'), 1)
-    console.log ("Foot")    
+    statementArr.splice(statementArr.indexOf('color'), 1)    
    }
    else if (murderBot.transportation === "Hoverboard"){
     statementArr.splice(statementArr.indexOf('model'), 1)   
-    console.log ("Hoverboard") 
    }
 
    //Since we have a variety of ways to say the nose this actually checks for which type of nose the bot has and then eliminates the other two. NOTE this If statement needs to be one chain and the transportation needs to be a seperate chain of else if statements as a single bot can have features from each that would modify the array.
@@ -260,17 +308,14 @@ witnessStatements = [
    if (murderBot.nose === "No nose"){
     statementArr.splice(statementArr.indexOf('nose'), 1)
     statementArr.splice(statementArr.indexOf('mustache'), 1)
-    console.log ("No Nose")
    }
    if (murderBot.nose === "Nose"){
     statementArr.splice(statementArr.indexOf('nonose'), 1)
     statementArr.splice(statementArr.indexOf('mustache'), 1)
-    console.log ("nose")
    }
    if (murderBot.nose === "Mustache"){
     statementArr.splice(statementArr.indexOf('nonose'), 1)
     statementArr.splice(statementArr.indexOf('nose'), 1)
-    console.log ("Mustache")
    }
    console.log (statementArr)
    console.log (murderBot)
@@ -293,7 +338,7 @@ function witnessStatementFunc() {
     //repeat with each additional attempt to find a witness when there are none.
     statementArr.push(`nomore`)
   }
-  var witnessAppend = `<div class='card witness-statement'>${witnessStatements[0][statementArr[currentWitness]]}</div>`
+  var witnessAppend = `<div class='card witness-statement content'>${witnessStatements[0][statementArr[currentWitness]]}</div>`
   statementArr.splice(currentWitness,1)
 
   $("#whoDidIt").append(witnessAppend);
@@ -316,43 +361,41 @@ function callRobotDeath(){
   roboNPC.splice(murderABot, 1)
   //This is saying if there are less than 10 suspects, the game is going to roll a number based on how many suspects are left. If that roll is 0 or 1 it is gameover for the user
   //This will guarentee a gameover when there are only 3 suspects left (the murderer and 2 innocents) but also push a chance to kill a sloppy detective that is taking too long.
-  if (roboNPC.length  < 10){
+  if (roboNPC.length  < 15){
     var gameOverRoll = [Math.floor(Math.random() * roboNPC.length)]
     if (gameOverRoll < 2){
       loseGame()
-      $(`.robotImg`).remove()
-      $(`.witness-statement`).remove()  
-      $('#npc-main').css('display', "none");
-      $('#play-npc').css('display', 'block') ; 
     }
   }
 }
 
 // Added in death animation function to be called whenever somerobo dies.
 function deathAnimation(){
-  // var snd = new Audio("./assets/sound/Thunder.mp3"); //wav is also supported
-  // snd.play(); //plays the sound
-  // // fadeIn over 3 seconds
-  // $("#rcontainer").fadeIn(2000)
-  // $("#reaper").fadeIn(2000, function(){
-  //   // Wait for 3 seconds after fadeIn completes
-  //   setTimeout(function(){
-  //       // Image fadeOut over 2 seconds
-  //       $("#reaper").fadeOut(2000);
-  //       $("#rcontainer").fadeOut(2000);
-  //   }, 1500);
-  // });
+  var snd = new Audio("./assets/sound/Thunder.mp3"); //wav is also supported
+  snd.volume = .2;
+  snd.play(); //plays the sound
+
+  // fadeIn over 3 seconds
+  $("#rcontainer").fadeIn(2000)
+  $("#reaper").fadeIn(2000, function(){
+    // Wait for 3 seconds after fadeIn completes
+    setTimeout(function(){
+        // Image fadeOut over 2 seconds
+        $("#reaper").fadeOut(2000);
+        $("#rcontainer").fadeOut(2000);
+    }, 1500);
+  });
   
 }
 
 //This calls a victory screen
 function winGame(){
-  playerName = $('#name-input')[0].value
   console.log(playerName)
   playerScore = roboNPC.length;
   saveHighScore();
 
   var snd = new Audio("./assets/sound/Victory.mp3"); //wav is also supported
+  snd.volume = 0.2;
   snd.play(); //plays the sound
   // fadeIn over 3 seconds
   $("#vcontainer").fadeIn(5000)
@@ -364,12 +407,13 @@ function winGame(){
         $("#vcontainer").fadeOut(5000);
     }, 10000);
   });
-
+  menuMode();
 }
 
 //This calls a gameover screen
 function loseGame(){
   var snd = new Audio("./assets/sound/Lose.mp3"); //wav is also supported
+  snd.volume = 0.2;
   snd.play(); //plays the sound
   // fadeIn over 3 seconds
   $("#lcontainer").fadeIn(5000)
@@ -381,9 +425,35 @@ function loseGame(){
         $("#lcontainer").fadeOut(5000);
     }, 10000);
   });
-
+  menuMode();
 }
 
+
+function menuMode(){
+  $(`.robotImg`).remove()
+  $(`.witness-statement`).remove()  
+  $('#npc-main').css('display', "none");
+  $('#play-npc').css('display', 'block');
+  $('#formSection').css('display', 'block'); 
+
+  init();
+  if (highScores.length > 0){
+    $('#highscores-tag').css('display', 'block'); 
+    $('#highscores').css('display', 'block'); 
+    $('#clear-highscores').css('display', 'block');  
+  }
+}
+
+function gameMode(){
+  $(`.robotImg`).remove()
+  $(`.witness-statement`).remove()  
+  $('#npc-main').css('display', 'block'); 
+  $('#play-npc').css('display', "none");
+  $('#formSection').css('display', "none"); 
+  $('#highscores-tag').css('display', "none");
+  $('#highscores').css('display', "none");
+  $('#clear-highscores').css('display', "none");
+}
 
 // This does a check on if the accused box matches the id of the murderer, if not someone dies.
 function callAccuse(){
@@ -391,10 +461,6 @@ function callAccuse(){
   {
     //The victory screen is called, all game variables are cleared on the board by removing their elements, start button is shown and board is hidden again.
     winGame()
-    $(`.robotImg`).remove()
-    $(`.witness-statement`).remove()  
-    $('#npc-main').css('display', "none");
-    $('#play-npc').css('display', 'block');  
   }
   else{
     //When the wrong choice is made you are visually told at the bottom and another robot dies.
@@ -410,25 +476,39 @@ $(".container").on("click", ".robotImg", function() {
   for (let i = 0; i < npcTotal; i++) {
    $(this).siblings(`#suspect${i}`).css('border', "none");
   }
-  $(this).css('border', "solid 5px black"); 
+  $(this).css('border', "solid 5px yellow"); 
   $("#wrongchoice").css('display', "none");
+
   //temp Accuse is made to pull the id out of the current selected box. The ID is then turned into a String instead of an Array Element.
   var tempAccuse = String($(this)[0].id)
   //With the tempAccuse being a workable string we can now use the method substr(7) on it which allows us to remove the first 7 characters from the string leaving us
   //with the remaining characters (tempAccuse at this time is = suspectXX where XX is the number and that is what we need to get. with substr we are left with this number)
   //So it can be treated like a number we also need to use the Number method to force it back in to being treated as such.
   accuseSelected = Number(tempAccuse.substr(7))+1
+  addInfoBox(accuseSelected);
 
 });
 
 $('#play-npc').on('click', function(){
-  $('#npc-main').css('display', "block");
+  // $('#npc-main').css('display', "block");
   //assigns player from input box
   playerName = $('#name-input')[0].value
-
-  buildRoboArr();
-  $(this).css('display', 'none')
+  console.log($('#name-input')[0].value)
+  if ($('#name-input')[0].value === "")
+  { 
+    $('#name-input')[0].placeholder = 'HEY ENTER YOUR NAME HERE!!!'
+    $('#name-input').css('border','5px solid #ff0000');
+  }
+  else if ($('#name-input')[0].value != "")
+  {
+    playerName = $('#name-input')[0].value
+    $('#name-input').css('border','2px solid #323232');
+    buildRoboArr();
+    gameMode();
+  }
 })
+
+
 
 $('#player-choice').on('click', 'button', function(){
   if ($(this)[0].id === 'get-witness' ){
@@ -445,6 +525,9 @@ $('#clear-highscores').on('click', function(){
   var clearScores = []
   localStorage.setItem("robo-scores", JSON.stringify(clearScores));
   init();
+  $('#highscores-tag').css('display', "none");
+  $('#highscores').css('display', "none");
+  $('#clear-highscores').css('display', "none");
 })
 
 // Get stored scoreboard from localStorage
@@ -452,12 +535,13 @@ function init() {
   $('.highscore-list').remove()
   highScores = JSON.parse(localStorage.getItem("robo-scores")) || [];  
   for (i=0; i < highScores.length; i++){
-  postScores = `<div class='highscore-list card'>${highScores[i].player} solved the case with ${highScores[i].score} survivors left.</div>`
+  postScores = `<div class='highscore-list card content'>${highScores[i].player} solved the case with ${highScores[i].score} survivors left.</div>`
   $('#highscores').append(postScores)
   }
 }
 
-init();
+gameMode();
+menuMode();
 
 function saveHighScore (){
   init();
