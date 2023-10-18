@@ -443,12 +443,23 @@ $(".container").on("click", ".robotImg", function() {
 });
 
 $('#play-npc').on('click', function(){
-  $('#npc-main').css('display', "block");
+  // $('#npc-main').css('display', "block");
   //assigns player from input box
   playerName = $('#name-input')[0].value
-
-  buildRoboArr();
-  gameMode();
+  console.log($('#name-input')[0].value)
+  if ($('#name-input')[0].value === "")
+  { 
+    $('#name-input')[0].placeholder = 'HEY ENTER YOUR NAME HERE!!!'
+    $('#name-input').css('border','5px solid #ff0000');
+    console.log ("if")
+  }
+  else if ($('#name-input')[0].value != "")
+  {
+    console.log("else if")
+    $('#name-input').css('border','2px solid #323232');
+    buildRoboArr();
+    gameMode();
+  }
 })
 
 

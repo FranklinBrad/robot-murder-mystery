@@ -200,11 +200,6 @@ h1 {
   display: none;
 }
 
-#formsection{
-  border: 5px blue solid;
-  justify-content: center;
-
-}
 
 #name-input{
   background-color: rgba(26, 18, 18, 0.738);
