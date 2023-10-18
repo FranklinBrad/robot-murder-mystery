@@ -2,6 +2,7 @@
 var npcTotal = 21
 
 // RequestURL to make an API pull from mockaroo. 
+//key=d862e8b0 or key=76436720 - Cost effective
 var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=76436720`
 
 // Array to store final Robo NPC in 
