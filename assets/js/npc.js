@@ -191,6 +191,7 @@ function getRoboImage(roboNPC) {
       }
       var roboAppend = `<div id='suspect${i}' class='robotImg card card-block' style='width: 150px'>
       <a href="#" rel="tip" 
+      id="${roboNPC[i].id}
       title="${roboNPC[i].first_name} ${roboNPC[i].last_name}
       barcode:(${roboNPC[i].areacode}) ${roboNPC[i].barcode}
       transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
@@ -208,58 +209,65 @@ function getRoboImage(roboNPC) {
       console.log("robo undefined or null");
     }
     //adds border around images
-   
- 
-    
-    
 
-
-    
   }
-  murderBot = roboNPC[Math.floor(Math.random() * npcTotal)]
+  murderBotID = [Math.floor(Math.random() * npcTotal)]
+  murderBot = roboNPC[murderBotID]
+  roboNPC.splice(murderBotID, 1)
   console.log(murderBot);
+  console.log(roboNPC + "roboNPCAfter Murder Selection")
   witnessStatementFunc()
 
-  var deathAppend = `<img src='./assets/img/event/oilsplash.png' width='100px' height='100px' class='l-2'/>`
-  $('#suspect5').append(deathAppend);
-  $('#suspect19').append(deathAppend);
-  $('#suspect1').append(deathAppend);
-  $('#suspect3').append(deathAppend);
-  $('#suspect15').append(deathAppend);
 
-  console.log(deathAppend)
-  console.log(`#suspect${5}`)
-  console.log(roboAppend)
+  // $('#suspect5').append(deathAppend);
 }
 
 //witness statement array 
 const witnessStatements = [
-  { areacode: `I was able to see a text message from the robo-attacker on the his or her phone. It looks like they were trying to order some new widgets from Maryland. The area code was ${murderBot.areacode}.` },
-  { barcode: `Being a robot you have excellent memory. I knew I wouldn't forget the last four digits of the barcode from the call he or she was getting. It was ${murderBot.barcode}` },
-  { color: `The robo-attacker left the scene in a ${murderBot.color} vehicle` },
-  { model: `The vehicle's model was ${murderBot.model}` },
-  { transportation: `He or she drove a ${murderBot.transportation}` },
-  { location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}. Ragnar Robot always powers down during work (i.e. takes a nap), but I dont think it was him this time.` },
-  { eyefeature: "Beep! Beep! I knew he had atleast two eyes because most robots around here only have a visor." },
-  { hair_type: "Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of antenna" },
-  { mouth: `I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had ${murderBot.mouth}.` },
-  { nose: "Beep beep! The robo-sandwich was a delicacy in the Bot World filled with the finest bolts. I saw the robo-attacker eating one earlier in the day, he must have exquisite taste with his ability to use his nose to smell. " },
-  { weapon: `I saw the robo-attacker with my own eyes - their ${murderBot.weapon} blinded me in the light. My visor vision focused and analyzed the weapon right away.` }
-]
+  { areacode: `I was able to see a text message from the robo-attacker on the his or her phone. It looks like they were trying to order some new widgets from Maryland. The area code was ${murderBot.areacode}.`,
+   barcode: `Being a robot you have excellent memory. I knew I wouldn't forget the last four digits of the barcode from the call he or she was getting. It was ${murderBot.barcode}` ,
+   color: `The robo-attacker left the scene in a ${murderBot.color} vehicle` ,
+   model: `The vehicle's model was ${murderBot.model}` ,
+   transportation: `He or she drove a ${murderBot.transportation}` ,
+   location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}. Ragnar Robot always powers down during work (i.e. takes a nap), but I dont think it was him this time.` ,
+   eyefeature: "Beep! Beep! I knew he had atleast two eyes because most robots around here only have a visor." ,
+   hair_type: "Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of antenna" ,
+   mouth: `I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had ${murderBot.mouth}.` ,
+   nose: "Beep beep! The robo-sandwich was a delicacy in the Bot World filled with the finest bolts. I saw the robo-attacker eating one earlier in the day, he must have exquisite taste with his ability to use his nose to smell. " }]
+  // ,
+  // { weapon: `I saw the robo-attacker with my own eyes - their ${murderBot.weapon} blinded me in the light. My visor vision focused and analyzed the weapon right away.` }
+
 
 //witness statement function
 function witnessStatementFunc() {
-  console.log(murderBot)
+  console.log(witnessStatements)
+  
+  //Constant for the types of witness statements, will delete each array as a type is used.
+  const statementArr = ['areacode', 'barcode', 'color', 'model', 'transportation', 'location', 'eyefeature', 'hair_type', 'mouth', 'nose']
+  //selecting a random type of witness statement
+  var currentWitness = [Math.floor(Math.random() * statementArr.length)]
+  //creating the append based on the statement type
+  var witnessAppend = `<div class='card'>${witnessStatements[0][statementArr[currentWitness]]}}</div>`
 
-  var currentWitness = [Math.floor(Math.random() * npcTotal)]
-  //loop to run through the array and put one up on the website each time
-  for (var x = 0; x < witnessStatements.length; x++) {
-    console.log(witnessStatements[x]);
-    var witnessAppend = `${witnessStatements[x]}`;
-    $("#whoDidIt").append(witnessAppend);
-  }
+  callRobotDeath()
+
+
+
+  $("#whoDidIt").append(witnessAppend);
 }
-console.log(murderBot);
+// This is called whenever a bot died (After a failed guess or witness statement is added)
+function callRobotDeath(){
+  var murderABot = [Math.floor(Math.random() * roboNPC.length)]
+  console.log(murderABot + "MurderABot")
+  //Creates the append for the image of the oil splatter
+  var deathAppend = `<img src='./assets/img/event/oilsplash.png' width='100px' height='100px' class='l-2'/>`
+  //Selects the div container of the randomly selected bot that will be killed based on murderABot variable
+  $(`#suspect${roboNPC[murderABot].id}`).append(deathAppend);
+  console.log(deathAppend + "deathAppend")
+
+  roboNPC.splice(murderABot, 1)
+  console.log(roboNPC + "roboNPCAfterMurder")
+}
 
 $(".container").on("click", ".robotImg", function() {
   console.log("hello")
@@ -278,10 +286,10 @@ $('#play-npc').on('click', function(){
 })
 
 $('#player-choice').on('click', 'button', function(){
-  console.log($(this))
-  if ($(this) === '#get-witness' ){
+  console.log ($(this))
+  if ($(this)[0].id === 'get-witness' ){
     console.log('we will call the get-witness func');
-  } else if ($(this).id === 'accuse' ){
+  } else if ($(this)[0].id === 'accuse' ){
     console.log('call accuse funct');
   } else {
     console.log('clicked somewhere wrong');
