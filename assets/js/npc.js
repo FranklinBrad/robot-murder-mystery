@@ -236,11 +236,9 @@ function getRoboImage(roboNPC) {
     } else {
       console.log("robo undefined or null");
     }
-    //adds border around images
-
-
-
   }
+  
+    //Adds scene text with players name
   var sceneText = (`<div class='card witness-statement content'>Detective ${playerName}, you've been called in because there was a murder at the Hoverboard factory.  [Insert intial robotDeath Name] was found in a puddle of its own hydraulic fluid disabled with multiple blaster gun holes.  Can you help us discover the culprit of the heinous act....</div>`)
   $('#scene').append(sceneText);
   murderBotID = [Math.floor(Math.random() * npcTotal)]
@@ -286,7 +284,7 @@ witnessStatements = [
    color: `The robo-attacker left the scene in something ${murderBot.color}` ,
    model: `The vehicle's model was ${murderBot.model}` ,
    transportation: `He or she was seen traveling by ${murderBot.transportation}` ,
-   location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}. Ragnar Robot always powers down during work (i.e. takes a nap), but I dont think it was him this time.` ,
+   location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}.` ,
    eyefeature: `Beep! Beep! I knew he had atleast ${murderBot.eye_feature} because most robots around here only have a visor.` ,
    hair_type: `Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of ${murderBot.hair_type}` ,
    mouth: `I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had ${murderBot.mouth}.` ,
@@ -305,7 +303,7 @@ witnessStatements = [
 
    //Since we have a variety of ways to say the nose this actually checks for which type of nose the bot has and then eliminates the other two. NOTE this If statement needs to be one chain and the transportation needs to be a seperate chain of else if statements as a single bot can have features from each that would modify the array.
    console.log (murderBot.nose)
-   if (murderBot.nose === "No nose"){
+   if (murderBot.nose === "No Nose"){
     statementArr.splice(statementArr.indexOf('nose'), 1)
     statementArr.splice(statementArr.indexOf('mustache'), 1)
    }
@@ -376,14 +374,15 @@ function deathAnimation(){
   snd.play(); //plays the sound
 
   // fadeIn over 3 seconds
-  $("#rcontainer").fadeIn(2000)
-  $("#reaper").fadeIn(2000, function(){
+  $("#rcontainer").fadeIn(1000)
+  $("#reaper").fadeIn(1000, function(){
     // Wait for 3 seconds after fadeIn completes
     setTimeout(function(){
         // Image fadeOut over 2 seconds
-        $("#reaper").fadeOut(2000);
-        $("#rcontainer").fadeOut(2000);
-    }, 1500);
+        $("#reaper").fadeOut(1000);
+        $("#rcontainer").fadeOut(1000);
+        snd.pause();
+    }, 2000);
   });
   
 }
