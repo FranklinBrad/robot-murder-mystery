@@ -146,8 +146,8 @@ h2 {
 
 h1 {
   padding: 1rem;
-  background-color: rgba(128, 128, 128, 0.439);
-  color: #14100E;
+  background-color: rgba(26, 18, 18, 0.738);
+  color: #d1ff2a;
 }
 
 .btn-primary,
@@ -199,18 +199,42 @@ h1 {
   display: none;
 }
 
-#wrongchoice,
-#get-witness,
-#accuse,
-#play-npc {
-  background-color: rgba(128, 128, 128, 0.439);
+#formsection{
+  border: 5px blue solid;
+  justify-content: center;
+
+}
+
+
+#name-input{
+  background-color: rgba(128, 128, 128, 0.738);
   border: 2px solid #323232;
   box-shadow: none;
   border-radius: 1rem;
   padding: 1rem;
-  color: #14100E;
+  color: #d1ff2a;
+  width: 100%;
+  margin-top: 2rem;
 }
 
+#highscores-tag,
+#clear-highscores,
+#highscores
+#wrongchoice,
+#get-witness,
+#accuse,
+#play-npc {
+  background-color: rgba(26, 18, 18, 0.738);
+  border: 2px solid #323232;
+  box-shadow: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #d1ff2a;
+  margin-top: 2rem;
+  text-align: center;
+}
+#highscores-tag:hover,
+#clear-highscores:hover,
 #wrongchoice:hover,
 #get-witness:hover,
 #accuse:hover,
