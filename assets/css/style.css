@@ -13,9 +13,15 @@
 }
 
 * {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Tilt Neon', sans-serif;
+}
 
-  /* font-family: 'Tilt Neon', sans-serif; */
+button,
+h1,
+h2,
+h3,
+a {
+  font-family: 'Orbitron', sans-serif;
 }
 
 header {
