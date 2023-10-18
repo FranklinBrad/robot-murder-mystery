@@ -392,6 +392,7 @@ function winGame(){
   console.log(playerName)
   playerScore = roboNPC.length;
   saveHighScore();
+
   var snd = new Audio("./assets/sound/Victory.mp3"); //wav is also supported
   snd.volume = 0.2;
   snd.play(); //plays the sound
