@@ -200,15 +200,15 @@ function getRoboImage(roboNPC) {
       <a href="#" rel="tip" 
       
       title=" ${roboNPC[i].first_name} ${roboNPC[i].last_name}
-      id: ${roboNPC[i].id}
-      barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
-      transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
-      location: ${roboNPC[i].location}
-      eyes: ${roboNPC[i].eye_feature}
-      hair: ${roboNPC[i].hair_type} 
-      mouth: ${roboNPC[i].mouth}
-      nose: ${roboNPC[i].nose}
-      color: ${roboNPC[i].common_color}">
+      Id: ${roboNPC[i].id}
+      Barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
+      Transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
+      Location: ${roboNPC[i].location}
+      Eyes: ${roboNPC[i].eye_feature}
+      Hair: ${roboNPC[i].hair_type} 
+      Mouth: ${roboNPC[i].mouth}
+      Nose: ${roboNPC[i].nose}
+      Color: ${roboNPC[i].common_color}">
       <img src='${roboImage}' alt='robo suspect' width='100px' height='100px'class='l-1' />
       </a>
       </div>`
@@ -327,7 +327,6 @@ function callRobotDeath(){
       $('#play-npc').css('display', 'block') ; 
     }
   }
-
 }
 
 // Added in death animation function to be called whenever somerobo dies.
