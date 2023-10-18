@@ -279,9 +279,9 @@ $(".container").on("click", ".robotImg", function() {
   $(this).css('border', "solid 5px black"); 
 });
 
-$('#play').on('click', function(){
+$('#play-npc').on('click', function(){
   $('#npc-main').css('display', "block");
-  buildRoboArr();
+  // buildRoboArr();
   $(this).css('display', 'none')
 })
 
