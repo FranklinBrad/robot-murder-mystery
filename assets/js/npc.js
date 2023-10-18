@@ -236,11 +236,9 @@ function getRoboImage(roboNPC) {
     } else {
       console.log("robo undefined or null");
     }
-    //adds border around images
-
-
-
   }
+  
+    //Adds scene text with players name
   var sceneText = (`<div class='card witness-statement content'>Detective ${playerName}, you've been called in because there was a murder at the Hoverboard factory.  [Insert intial robotDeath Name] was found in a puddle of its own hydraulic fluid disabled with multiple blaster gun holes.  Can you help us discover the culprit of the heinous act....</div>`)
   $('#scene').append(sceneText);
   murderBotID = [Math.floor(Math.random() * npcTotal)]
