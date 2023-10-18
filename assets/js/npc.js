@@ -9,6 +9,13 @@ var roboNPC = []
 
 // make variable murderBot an array
 var murderBot = []
+//the actual statements used for the game
+var witnessStatements = []
+//statement pool that deteriorates as the game goes on
+var statementArr = []
+// accuse selector
+var accuseSelected = ""
+
 
 //These variables should never be modified so they are set as a const
 const npcDescArr = [
@@ -177,7 +184,6 @@ function buildRoboArr() {
 
 // function get to set random Robo images to img src attr and show oil spill death
 function getRoboImage(roboNPC) {
-  console.log(roboNPC[0].avatar);
   // for loop to run through array based on length
   for (var i = 0; i < roboNPC.length; i++) {
     // if else to make sure that the values are not null or undefined
@@ -189,11 +195,13 @@ function getRoboImage(roboNPC) {
       } else if (roboNPC[i].transportation === "Hoverboard") {
         roboNPC[i].model = ""
       }
-      var roboAppend = `<div id='suspect${i}' class='robotImg card card-block' style='width: 150px'>
+      //I broke the Qtip when I added in the ID above the title, Title is actually a structual part of the Qtip 
+      var roboAppend = `<div id='suspect${i}' class='robotImg card card-block' style='width: 125px'>
       <a href="#" rel="tip" 
-      id="${roboNPC[i].id}
-      title="${roboNPC[i].first_name} ${roboNPC[i].last_name}
-      barcode:(${roboNPC[i].areacode}) ${roboNPC[i].barcode}
+      
+      title=" ${roboNPC[i].first_name} ${roboNPC[i].last_name}
+      id: ${roboNPC[i].id}
+      barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
       transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
       location: ${roboNPC[i].location}
       eyes: ${roboNPC[i].eye_feature}
@@ -214,83 +222,204 @@ function getRoboImage(roboNPC) {
   murderBotID = [Math.floor(Math.random() * npcTotal)]
   murderBot = roboNPC[murderBotID]
   roboNPC.splice(murderBotID, 1)
-  console.log(murderBot);
-  console.log(roboNPC + "roboNPCAfter Murder Selection")
+  //Function call to create the witness statements based on current murder bot and then call the first witness statement to kill the first bot.
+  createWitnessStatements(murderBot)
   witnessStatementFunc()
-
-
-  // $('#suspect5').append(deathAppend);
 }
 
-//witness statement array 
-const witnessStatements = [
+//Created a call function to update the witness staements and made it a global variable that gets changed when the function is called. It was having a hard time being passed around as a constant and creating it on the global scale as a constant was making it so it didn't have proper information from the murderbot. Also later on this would cause problems in the second game since we would not be able to update it for the new murderbot.
+// in the barcode pull the string literal is now ${String(murderBot.barcode).substr(-1)} which turns the .barcode into a string and then substr(-1) counts from the end pulling the last character out giving us the last number.
+function createWitnessStatements(murderBot){
+statementArr = ['areacode', 'barcode', 'color', 'model', 'transportation', 'location', 'eyefeature', 'hair_type', 'mouth', 'nose', 'nonose', 'mustache']
+witnessStatements = [
   { areacode: `I was able to see a text message from the robo-attacker on the his or her phone. It looks like they were trying to order some new widgets from Maryland. The area code was ${murderBot.areacode}.`,
-   barcode: `Being a robot you have excellent memory. I knew I wouldn't forget the last four digits of the barcode from the call he or she was getting. It was ${murderBot.barcode}` ,
-   color: `The robo-attacker left the scene in a ${murderBot.color} vehicle` ,
+   barcode: `Being a robot you have excellent memory. I knew I wouldn't forget the last digit of the barcode from the call he or she was getting. It was ${String(murderBot.barcode).substr(-1)}` ,
+   color: `The robo-attacker left the scene in something ${murderBot.color}` ,
    model: `The vehicle's model was ${murderBot.model}` ,
-   transportation: `He or she drove a ${murderBot.transportation}` ,
+   transportation: `He or she was seen traveling by ${murderBot.transportation}` ,
    location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}. Ragnar Robot always powers down during work (i.e. takes a nap), but I dont think it was him this time.` ,
-   eyefeature: "Beep! Beep! I knew he had atleast two eyes because most robots around here only have a visor." ,
-   hair_type: "Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of antenna" ,
+   eyefeature: `Beep! Beep! I knew he had atleast ${murderBot.eye_feature} because most robots around here only have a visor.` ,
+   hair_type: `Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of ${murderBot.hair_type}` ,
    mouth: `I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had ${murderBot.mouth}.` ,
-   nose: "Beep beep! The robo-sandwich was a delicacy in the Bot World filled with the finest bolts. I saw the robo-attacker eating one earlier in the day, he must have exquisite taste with his ability to use his nose to smell. " }]
+   nonose: `Boop beep! It sure will be hard to find who did it, like must of the tin cans around here I didn't even see a nose on that robot!`,
+   nose: "Beep beep! The robo-sandwich was a delicacy in the Bot World filled with the finest bolts. I saw the robo-attacker eating one earlier in the day, he must have exquisite taste with his ability to use his nose to smell. ",
+   mustache:`I saw a lot of fine metal like wires by where that last bot was murdered. I'm sure the one who did it must have had a mustache`,
+   nomore:`While looking for a new witness you realize there are none left and another robot was murdered.` }]
+  //This if set checks for having a foot as transportation then removing irrelevant witness statements, and then checking for hoverboard
+   if (murderBot.transportation === "Foot"){
+    statementArr.splice(statementArr.indexOf('model'), 1)
+    statementArr.splice(statementArr.indexOf('color'), 1)    
+   }
+   else if (murderBot.transportation === "Hoverboard"){
+    statementArr.splice(statementArr.indexOf('model'), 1)    
+   }
+
+   //Since we have a variety of ways to say the nose this actually checks for which type of nose the bot has and then eliminates the other two. NOTE this If statement needs to be one chain and the transportation needs to be a seperate chain of else if statements as a single bot can have features from each that would modify the array.
+   if (murderBot.nose === "No nose"){
+    statementArr.splice(statementArr.indexOf('Nose'), 1)
+    statementArr.splice(statementArr.indexOf('Mustache'), 1)
+   }
+   if (murderBot.nose === "Nose"){
+    statementArr.splice(statementArr.indexOf('No nose'), 1)
+    statementArr.splice(statementArr.indexOf('Mustache'), 1)
+   }
+   if (murderBot.nose === "Mustache"){
+    statementArr.splice(statementArr.indexOf('No nose'), 1)
+    statementArr.splice(statementArr.indexOf('Nose'), 1)
+   }
   // ,
   // { weapon: `I saw the robo-attacker with my own eyes - their ${murderBot.weapon} blinded me in the light. My visor vision focused and analyzed the weapon right away.` }
+
+}
 
 
 //witness statement function
 function witnessStatementFunc() {
-  console.log(witnessStatements)
   
   //Constant for the types of witness statements, will delete each array as a type is used.
-  const statementArr = ['areacode', 'barcode', 'color', 'model', 'transportation', 'location', 'eyefeature', 'hair_type', 'mouth', 'nose']
+
   //selecting a random type of witness statement
   var currentWitness = [Math.floor(Math.random() * statementArr.length)]
   //creating the append based on the statement type
-  var witnessAppend = `<div class='card'>${witnessStatements[0][statementArr[currentWitness]]}}</div>`
-
-  callRobotDeath()
-
-
+  if (statementArr.length < 1 ){
+    //if the statementArr is empty that means there are no more witness clues. This will then push a canned statement in saying so that will be immediately removed again and
+    //repeat with each additional attempt to find a witness when there are none.
+    statementArr.push(`nomore`)
+  }
+  var witnessAppend = `<div class='card witness-statement'>${witnessStatements[0][statementArr[currentWitness]]}</div>`
+  statementArr.splice(currentWitness,1)
 
   $("#whoDidIt").append(witnessAppend);
+  callRobotDeath();
 }
+ 
+
+
 // This is called whenever a bot died (After a failed guess or witness statement is added)
 function callRobotDeath(){
+  deathAnimation();
   var murderABot = [Math.floor(Math.random() * roboNPC.length)]
-  console.log(murderABot + "MurderABot")
   //Creates the append for the image of the oil splatter
   var deathAppend = `<img src='./assets/img/event/oilsplash.png' width='100px' height='100px' class='l-2'/>`
   //Selects the div container of the randomly selected bot that will be killed based on murderABot variable
-  $(`#suspect${roboNPC[murderABot].id}`).append(deathAppend);
-  console.log(deathAppend + "deathAppend")
-
+  //The problem with the wrong robot being murdered was because the following line had $(`#suspect${roboNPC[murderABot].id}`) wasn't fully wrong we were just (or atleast I was)
+  //just looking at it wrong. It was grabbing the right id however we do need a subtraction to balance out id vs location which I believe is -1.
+  $(`#suspect${(roboNPC[murderABot].id)-1}`).append(deathAppend);
+  //Splice removes the suspect that was just murdered from the roboNPC Array
   roboNPC.splice(murderABot, 1)
-  console.log(roboNPC + "roboNPCAfterMurder")
+  //This is saying if there are less than 10 suspects, the game is going to roll a number based on how many suspects are left. If that roll is 0 or 1 it is gameover for the user
+  //This will guarentee a gameover when there are only 3 suspects left (the murderer and 2 innocents) but also push a chance to kill a sloppy detective that is taking too long.
+  if (roboNPC.length  < 10){
+    var gameOverRoll = [Math.floor(Math.random() * roboNPC.length)]
+    if (gameOverRoll < 2){
+      loseGame()
+    }
+  }
+
+}
+
+// Added in death animation function to be called whenever somerobo dies.
+function deathAnimation(){
+  var snd = new Audio("./assets/sound/Thunder.mp3"); //wav is also supported
+  snd.play(); //plays the sound
+  // fadeIn over 3 seconds
+  $("#rcontainer").fadeIn(2000)
+  $("#reaper").fadeIn(2000, function(){
+    // Wait for 3 seconds after fadeIn completes
+    setTimeout(function(){
+        // Image fadeOut over 2 seconds
+        $("#reaper").fadeOut(2000);
+        $("#rcontainer").fadeOut(2000);
+    }, 1500);
+  });
+  
+}
+
+//This calls a victory screen
+function winGame(){
+  var snd = new Audio("./assets/sound/Victory.mp3"); //wav is also supported
+  snd.play(); //plays the sound
+  // fadeIn over 3 seconds
+  $("#rcontainer").fadeIn(5000)
+  $("#victory").fadeIn(5000, function(){
+    // Wait for 3 seconds after fadeIn completes
+    setTimeout(function(){
+        // Image fadeOut over 2 seconds
+        $("#victory").fadeOut(5000);
+        $("#rcontainer").fadeOut(5000);
+    }, 10000);
+  });
+  $(`.robotImg`).remove()
+  $(`.witness-statement`).remove()  
+  $('#npc-main').css('display', "none");
+  $('#play-npc').css('display', 'block');  
+}
+
+//This calls a gameover screen
+function loseGame(){
+  var snd = new Audio("./assets/sound/Lose.mp3"); //wav is also supported
+  snd.play(); //plays the sound
+  // fadeIn over 3 seconds
+  $("#lcontainer").fadeIn(5000)
+  $("#loser").fadeIn(5000, function(){
+    // Wait for 3 seconds after fadeIn completes
+    setTimeout(function(){
+        // Image fadeOut over 2 seconds
+        $("#loser").fadeOut(5000);
+        $("#lcontainer").fadeOut(5000);
+    }, 10000);
+  });
+  $(`.robotImg`).remove()
+  $(`.witness-statement`).remove()  
+  $('#npc-main').css('display', "none");
+  $('#play-npc').css('display', 'block') ; 
+}
+
+
+// This does a check on if the accused box matches the id of the murderer, if not someone dies.
+function callAccuse(){
+  if (murderBot.id == accuseSelected)
+  {
+    //The victory screen is called, all game variables are cleared on the board by removing their elements, start button is shown and board is hidden again.
+    winGame()
+  }
+  else{
+    //When the wrong choice is made you are visually told at the bottom and another robot dies.
+    $("#wrongchoice").css('display', "block");
+    callRobotDeath()
+  }
+  
 }
 
 $(".container").on("click", ".robotImg", function() {
-  console.log("hello")
-  for (let i = 0; i < roboNPC.length; i++) {
-   $(this).siblings(`#suspect${roboNPC[i].id}`).css('border', "none");
-   console.log($(this).siblings(`suspect${roboNPC[i].id}`))
-   console.log(this)
+  //changed it from roboNPC.length to NPC total Since we are removing the NPC's via death, but not the images from the board this seems to workout. And with the overylay we 
+  //still can't select dead NPC's
+  for (let i = 0; i < npcTotal; i++) {
+   $(this).siblings(`#suspect${i}`).css('border', "none");
   }
   $(this).css('border', "solid 5px black"); 
+  $("#wrongchoice").css('display', "none");
+  //temp Accuse is made to pull the id out of the current selected box. The ID is then turned into a String instead of an Array Element.
+  var tempAccuse = String($(this)[0].id)
+  //With the tempAccuse being a workable string we can now use the method substr(7) on it which allows us to remove the first 7 characters from the string leaving us
+  //with the remaining characters (tempAccuse at this time is = suspectXX where XX is the number and that is what we need to get. with substr we are left with this number)
+  //So it can be treated like a number we also need to use the Number method to force it back in to being treated as such.
+  accuseSelected = Number(tempAccuse.substr(7))+1
+
 });
 
 $('#play-npc').on('click', function(){
   $('#npc-main').css('display', "block");
-  // buildRoboArr();
+  buildRoboArr();
   $(this).css('display', 'none')
 })
 
 $('#player-choice').on('click', 'button', function(){
-  console.log ($(this))
   if ($(this)[0].id === 'get-witness' ){
-    console.log('we will call the get-witness func');
+    //Calls witness statement
+    witnessStatementFunc();
   } else if ($(this)[0].id === 'accuse' ){
-    console.log('call accuse funct');
+    callAccuse();
   } else {
     console.log('clicked somewhere wrong');
   }
