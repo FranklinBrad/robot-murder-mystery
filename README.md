@@ -2,7 +2,7 @@
 
 ## Home Page
 
-![Preview Screenshot](../group-project-1/assets/img/screenshot-robo-game.png)
+![Preview Screenshot](./assets/img/screenshot-robo-game.png)
 
 ## Game Origin Story
 
@@ -55,6 +55,9 @@ Third party products utilized include Robohash, DALLE for images, and Mockaroo.
 
 ## License
 
-## Deployed page
+See repo for license information.
 
-* https://franklinbrad.github.io/robot-murder-mystery/
+## Links
+
+* Deployed Page https://franklinbrad.github.io/robot-murder-mystery/
+* Repo Location https://github.com/FranklinBrad/robot-murder-mystery/
