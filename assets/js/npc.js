@@ -19,107 +19,107 @@ var accuseSelected = ""
 
 //These variables should never be modified so they are set as a const
 const npcDescArr = [
-  { "avatar": "r1.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange" },
-  { "avatar": "r2.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "Teeth", "nose": "No Nose", "common_color": "Blue" },
-  { "avatar": "r3.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Brown" },
-  { "avatar": "r4.png", "eye_feature": "One Eye", "hair_type": "Radar", "mouth": "Teeth", "nose": "No Nose", "common_color": "Yellow" },
-  { "avatar": "r5.png", "eye_feature": "No Eyes", "hair_type": "Light", "mouth": "Teeth", "nose": "No Nose", "common_color": "Green" },
-  { "avatar": "r6.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "Teeth", "nose": "No Nose", "common_color": "Red" },
-  { "avatar": "r7.png", "eye_feature": "Two Eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Nose", "common_color": "Blue" },
-  { "avatar": "r8.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver" },
-  { "avatar": "r9.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange" },
-  { "avatar": "r10.png", "eye_feature": "Two Eyes", "hair_type": "Radar", "mouth": "Teeth", "nose": "No Nose", "common_color": "White" },
-  { "avatar": "r11.png", "eye_feature": "Two Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Orange" },
-  { "avatar": "r12.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange" },
-  { "avatar": "r13.png", "eye_feature": "Two Eyes", "hair_type": "Radar", "mouth": "Teeth", "nose": "No Nose", "common_color": "Pink" },
-  { "avatar": "r14.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Moustache", "common_color": "Silver" },
-  { "avatar": "r15.png", "eye_feature": "Two Eyes", "hair_type": "Ball Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Purple" },
-  { "avatar": "r16.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Red" },
-  { "avatar": "r17.png", "eye_feature": "No Eyes", "hair_type": "Ball Antenna", "mouth": "Teeth", "nose": "No Nose", "common_color": "Pink" },
-  { "avatar": "r18.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Purple" },
-  { "avatar": "r19.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink" },
-  { "avatar": "r20.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink" },
-  { "avatar": "r21.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange" },
-  { "avatar": "r22.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Moustache", "common_color": "Silver" },
-  { "avatar": "r23.png", "eye_feature": "No Eyes", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Red" },
-  { "avatar": "r24.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Moustache", "common_color": "Purple" },
-  { "avatar": "r25.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "Pink" },
-  { "avatar": "r26.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "Teeth", "nose": "Nose", "common_color": "Brown" },
-  { "avatar": "r27.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "Teeth", "nose": "No Nose", "common_color": "Red" },
-  { "avatar": "r28.png", "eye_feature": "Two eyes", "hair_type": "Radar", "mouth": "Teeth", "nose": "No Nose", "common_color": "Pink" },
-  { "avatar": "r29.png", "eye_feature": "Two eyes", "hair_type": "Bald", "mouth": "No teeth", "nose": "Nose", "common_color": "Yellow" },
-  { "avatar": "r30.png", "eye_feature": "No eyes", "hair_type": "Light", "mouth": "Teeth", "nose": "No Nose", "common_color": "Green" },
-  { "avatar": "r31.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No teeth", "nose": "Nose", "common_color": "Green" },
-  { "avatar": "r32.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "No teeth", "nose": "No Nose", "common_color": "Brown" },
-  { "avatar": "r33.png", "eye_feature": "No eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No Nose", "common_color": "Silver" },
-  { "avatar": "r34.png", "eye_feature": "Two eyes", "hair_type": "Light", "mouth": "No teeth", "nose": "No Nose", "common_color": "Green" },
-  { "avatar": "r35.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "Teeth", "nose": "No nose", "common_color": "Orange" },
-  { "avatar": "r36.png", "eye_feature": "No eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Pink" },
-  { "avatar": "r37.png", "eye_feature": "Two eyes", "hair_type": "Light", "mouth": "No teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r38.png", "eye_feature": "Two eyes", "hair_type": "button", "mouth": "No teeth", "nose": "No nose", "common_color": "Silver" },
-  { "avatar": "r39.png", "eye_feature": "Two eyes", "hair_type": "Button", "mouth": "Teeth", "nose": "No nose", "common_color": "Orange" },
-  { "avatar": "r40.png", "eye_feature": "No eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r41.png", "eye_feature": "Two eyes", "hair_type": "Light", "mouth": "No teeth", "nose": "No nose", "common_color": "silver" },
-  { "avatar": "r42.png", "eye_feature": "Two eyes", "hair_type": "Antenna", "mouth": "No teeth", "nose": "No nose", "common_color": "Orange" },
-  { "avatar": "r43.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r44.png", "eye_feature": "No eyes", "hair_type": "Wires", "mouth": "Teeth", "nose": "No nose", "common_color": "Yellow" },
-  { "avatar": "r45.png", "eye_feature": "No eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Moustache", "common_color": "Silver" },
-  { "avatar": "r46.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "No teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r47.png", "eye_feature": "One Eye", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r48.png", "eye_feature": "No eyes", "hair_type": "Plate 7", "mouth": "No teeth", "nose": "No nose", "common_color": "Red" },
-  { "avatar": "r49.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No teeth", "nose": "Moustache", "common_color": "Red" },
-  { "avatar": "r50.png", "eye_feature": "Two eyes", "hair_type": "Light", "mouth": "No teeth ", "nose": "No nose", "common_color": "Silver" },
-  { "avatar": "r51.png", "eye_feature": "One eye", "hair_type": "Button", "mouth": "No teeth", "nose": "No nose", "common_color": "Silver" },
-  { "avatar": "r52.png", "eye_feature": "No eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Silver" },
-  { "avatar": "r53.png", "eye_feature": "Two eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Brown" },
-  { "avatar": "r54.png", "eye_feature": "Two eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Orange" },
-  { "avatar": "r55.png", "eye_feature": "One eye", "hair_type": "Spike", "mouth": "No teeth", "nose": "No nose", "common_color": "Brown" },
-  { "avatar": "r56.png", "eye_feature": "One eye", "hair_type": "Plate 7", "mouth": "No teeth", "nose": "No nose", "common_color": "Pink" },
-  { "avatar": "r57.png", "eye_feature": "No eyes", "hair_type": "Bald", "mouth": "No teeth", "nose": "Moustache", "common_color": "Purple" },
-  { "avatar": "r58.png", "eye_feature": "No eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Pink" },
-  { "avatar": "r59.png", "eye_feature": "One eye", "hair_type": "Bolt", "mouth": "No teeth", "nose": "No nose", "common_color": "PInk" },
-  { "avatar": "r60.png", "eye_feature": "Two eyes", "hair_type": "Ball Antenna", "mouth": "No teeth", "nose": "No nose", "common_color": "Purple" },
-  { "avatar": "r61.png", "eye_feature": "One eye", "hair_type": "Plate 7", "mouth": "No teeth", "nose": "No nose", "common_color": "Pink" },
-  { "avatar": "r62.png", "eye_feature": "One eye", "hair_type": "Bald", "mouth": "No teeth", "nose": "Nose", "common_color": "Yellow" },
-  { "avatar": "r63.png", "eye_feature": "Two eyes", "hair_type": "Light", "mouth": "No teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r64.png", "eye_feature": "One eye", "hair_type": "Bald", "mouth": "No teeth", "nose": "Nose", "common_color": "Green" },
-  { "avatar": "r65.png", "eye_feature": "Two eyes", "hair_type": "Antenna", "mouth": "No teeth", "nose": "No nose", "common_color": "Red" },
-  { "avatar": "r66.png", "eye_feature": "One eye", "hair_type": "Spike", "mouth": "Teeth", "nose": "No nose", "common_color": "Orange" },
-  { "avatar": "r67.png", "eye_feature": "No eyes", "hair_type": "Wires", "mouth": "Teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r68.png", "eye_feature": "One eye", "hair_type": "Bald", "mouth": "Teeth", "nose": "Moustache", "common_color": "Green" },
-  { "avatar": "r69.png", "eye_feature": "Two eyes", "hair_type": "Antenna", "mouth": "No teeth", "nose": "No nose", "common_color": "Yellow" },
-  { "avatar": "r70.png", "eye_feature": "Two eyes", "hair_type": "Bald", "mouth": "No teeth", "nose": "Nose", "common_color": "Yellow" },
-  { "avatar": "r71.png", "eye_feature": "One eye", "hair_type": "Bald", "mouth": "No teeth", "nose": "Moustache", "common_color": "Silver" },
-  { "avatar": "r72.png", "eye_feature": "No eyes", "hair_type": "Bald", "mouth": "No teeth", "nose": "No nose", "common_color": "yellow" },
-  { "avatar": "r73.png", "eye_feature": "Two eyes", "hair_type": "Plate 7", "mouth": "No teeth", "nose": "No nose", "common_color": "White" },
-  { "avatar": "r74.png", "eye_feature": "One eye", "hair_type": "Wires", "mouth": "No teeth", "nose": "No nose", "common_color": "White" },
-  { "avatar": "r75.png", "eye_feature": "One eye", "hair_type": "Spike", "mouth": "No teeth", "nose": "No nose", "common_color": "Purple" },
-  { "avatar": "r76.png", "eye_feature": "Two Eyes", "hair_type": "Light", "mouth": "No teeth", "nose": "No nose", "common_color": "Green" },
-  { "avatar": "r77.png", "eye_feature": "Two eyes", "hair_type": "Antenna", "mouth": "Teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r78.png", "eye_feature": "No eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Gray" },
-  { "avatar": "r79.png", "eye_feature": "One eye", "hair_type": "Wires", "mouth": "No teeth", "nose": "No nose", "common_color": "White" },
-  { "avatar": "r80.png", "eye_feature": "One eye", "hair_type": "Bald", "mouth": "No teeth", "nose": "Mustache", "common_color": "Gray" },
-  { "avatar": "r81.png", "eye_feature": "Two eyes", "hair_type": "Button", "mouth": "Teeth", "nose": "No nose", "common_color": "Orange" },
-  { "avatar": "r82.png", "eye_feature": "One eye", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Yellow" },
-  { "avatar": "r83.png", "eye_feature": "Two eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No nose", "common_color": "Brown" },
-  { "avatar": "r84.png", "eye_feature": "No eyes", "hair_type": "Antenna", "mouth": "No teeth", "nose": "No nose", "common_color": "Orange" },
-  { "avatar": "r85.png", "eye_feature": "Two eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No nose", "common_color": "White" },
-  { "avatar": "r86.png", "eye_feature": "One eye", "hair_type": "Button", "mouth": "No teeth", "nose": "No nose", "common_color": "Pink" },
-  { "avatar": "r87.png", "eye_feature": "Two eyes", "hair_type": "Radar", "mouth": "Teeth", "nose": "No nose", "common_color": "White" },
-  { "avatar": "r88.png", "eye_feature": "Two eyes", "hair_type": "Plate 7", "mouth": "No teeth", "nose": "No nose", "common_color": "White" },
-  { "avatar": "r89.png", "eye_feature": "One eye", "hair_type": "Button", "mouth": "No teeth", "nose": "No nose", "common_color": "Gray" },
-  { "avatar": "r90.png", "eye_feature": "Two eyes", "hair_type": "Antenna", "mouth": "No teeth", "nose": "No nose", "common_color": "Purple" },
-  { "avatar": "r91.png", "eye_feature": "One eye", "hair_type": "Bald", "mouth": "No teeth", "nose": "Mustache", "common_color": "Red" },
-  { "avatar": "r92.png", "eye_feature": "Two eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Brown" },
-  { "avatar": "r93.png", "eye_feature": "No eyes", "hair_type": "Wires", "mouth": "Teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r94.png", "eye_feature": "One eye", "hair_type": "Bald", "mouth": "Teeth", "nose": "Mustache", "common_color": "Green" },
-  { "avatar": "r95.png", "eye_feature": "Two eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Nose", "common_color": "Green" },
-  { "avatar": "r96.png", "eye_feature": "Two eyes", "hair_type": "Antenna", "mouth": "No teeth", "nose": "No nose", "common_color": "Blue" },
-  { "avatar": "r97.png", "eye_feature": "No eyes", "hair_type": "Antenna", "mouth": "No teeth", "nose": "No nose", "common_color": "Pink" },
-  { "avatar": "r98.png", "eye_feature": "One eye", "hair_type": "Button", "mouth": "Teeth", "nose": "No nose", "common_color": "Gray" },
-  { "avatar": "r99.png", "eye_feature": "Two eyes", "hair_type": "Bald", "mouth": "No teeth", "nose": "Nose", "common_color": "Green" },
-  { "avatar": "r100.png", "eye_feature": "No eyes", "hair_type": "Antenna", "mouth": "Teeth", "nose": "No nose", "common_color": "Pink" },
-  { "avatar": "r101.png", "eye_feature": "No eyes", "hair_type": "Radar", "mouth": "No teeth", "nose": "No nose", "common_color": "Gray" }
+  {"avatar": "r1.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r2.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r3.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Brown"},
+  {"avatar": "r4.png", "eye_feature": "One Eye", "hair_type": "Radar", "mouth": "Teeth", "nose": "No Nose", "common_color": "Yellow"},
+  {"avatar": "r5.png", "eye_feature": "No Eyes", "hair_type": "Light", "mouth": "Teeth", "nose": "No Nose", "common_color": "Green"},
+  {"avatar": "r6.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "Teeth", "nose": "No Nose", "common_color": "Red"},
+  {"avatar": "r7.png", "eye_feature": "Two Eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Nose", "common_color": "Blue"},
+  {"avatar": "r8.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver"},
+  {"avatar": "r9.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r10.png", "eye_feature": "Two Eyes", "hair_type": "Radar", "mouth": "Teeth", "nose": "No Nose", "common_color": "White"},
+  {"avatar": "r11.png", "eye_feature": "Two Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Orange"},
+  {"avatar": "r12.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r13.png", "eye_feature": "Two Eyes", "hair_type": "Radar", "mouth": "Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r14.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Mustache", "common_color": "Silver"},
+  {"avatar": "r15.png", "eye_feature": "Two Eyes", "hair_type": "Ball Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Purple"},
+  {"avatar": "r16.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Red"},
+  {"avatar": "r17.png", "eye_feature": "No Eyes", "hair_type": "Ball Antenna", "mouth": "Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r18.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Purple"},
+  {"avatar": "r19.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r20.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r21.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r22.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Mustache", "common_color": "Silver"},
+  {"avatar": "r23.png", "eye_feature": "No Eyes", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Red"},
+  {"avatar": "r24.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Mustache", "common_color": "Purple"},
+  {"avatar": "r25.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r26.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "Teeth", "nose": "Nose", "common_color": "Brown"},
+  {"avatar": "r27.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "Teeth", "nose": "No Nose", "common_color": "Red"},
+  {"avatar": "r28.png", "eye_feature": "Two Eyes", "hair_type": "Radar", "mouth": "Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r29.png", "eye_feature": "Two Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Yellow"},
+  {"avatar": "r30.png", "eye_feature": "No Eyes", "hair_type": "Light", "mouth": "Teeth", "nose": "No Nose", "common_color": "Green"},
+  {"avatar": "r31.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Green"},
+  {"avatar": "r32.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Brown"},
+  {"avatar": "r33.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver"},
+  {"avatar": "r34.png", "eye_feature": "Two Eyes", "hair_type": "Light", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Green"},
+  {"avatar": "r35.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r36.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r37.png", "eye_feature": "Two Eyes", "hair_type": "Light", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r38.png", "eye_feature": "Two Eyes", "hair_type": "button", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver"},
+  {"avatar": "r39.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r40.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r41.png", "eye_feature": "Two Eyes", "hair_type": "Light", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver"},
+  {"avatar": "r42.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r43.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r44.png", "eye_feature": "No Eyes", "hair_type": "Wires", "mouth": "Teeth", "nose": "No Nose", "common_color": "Yellow"},
+  {"avatar": "r45.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Mustache", "common_color": "Silver"},
+  {"avatar": "r46.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r47.png", "eye_feature": "One Eye", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r48.png", "eye_feature": "No Eyes", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Red"},
+  {"avatar": "r49.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Mustache", "common_color": "Red"},
+  {"avatar": "r50.png", "eye_feature": "Two Eyes", "hair_type": "Light", "mouth": "No Teeth ", "nose": "No Nose", "common_color": "Silver"},
+  {"avatar": "r51.png", "eye_feature": "One Eye", "hair_type": "Button", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver"},
+  {"avatar": "r52.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver"},
+  {"avatar": "r53.png", "eye_feature": "Two Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Brown"},
+  {"avatar": "r54.png", "eye_feature": "Two Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r55.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Brown"},
+  {"avatar": "r56.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r57.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Mustache", "common_color": "Purple"},
+  {"avatar": "r58.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r59.png", "eye_feature": "One Eye", "hair_type": "Bolt", "mouth": "No Teeth", "nose": "No Nose", "common_color": "PInk"},
+  {"avatar": "r60.png", "eye_feature": "Two Eyes", "hair_type": "Ball Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Purple"},
+  {"avatar": "r61.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r62.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Yellow"},
+  {"avatar": "r63.png", "eye_feature": "Two Eyes", "hair_type": "Light", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r64.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Green"},
+  {"avatar": "r65.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Red"},
+  {"avatar": "r66.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r67.png", "eye_feature": "No Eyes", "hair_type": "Wires", "mouth": "Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r68.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "Teeth", "nose": "Mustache", "common_color": "Green"},
+  {"avatar": "r69.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Yellow"},
+  {"avatar": "r70.png", "eye_feature": "Two Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Yellow"},
+  {"avatar": "r71.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Mustache", "common_color": "Silver"},
+  {"avatar": "r72.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "No Nose", "common_color": "yellow"},
+  {"avatar": "r73.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "White"},
+  {"avatar": "r74.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "No Teeth", "nose": "No Nose", "common_color": "White"},
+  {"avatar": "r75.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Purple"},
+  {"avatar": "r76.png", "eye_feature": "Two Eyes", "hair_type": "Light", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Green"},
+  {"avatar": "r77.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r78.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Gray"},
+  {"avatar": "r79.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "No Teeth", "nose": "No Nose", "common_color": "White"},
+  {"avatar": "r80.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Mustache", "common_color": "Gray"},
+  {"avatar": "r81.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r82.png", "eye_feature": "One Eye", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Yellow"},
+  {"avatar": "r83.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "Brown"},
+  {"avatar": "r84.png", "eye_feature": "No Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Orange"},
+  {"avatar": "r85.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "Teeth", "nose": "No Nose", "common_color": "White"},
+  {"avatar": "r86.png", "eye_feature": "One Eye", "hair_type": "Button", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r87.png", "eye_feature": "Two Eyes", "hair_type": "Radar", "mouth": "Teeth", "nose": "No Nose", "common_color": "White"},
+  {"avatar": "r88.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "White"},
+  {"avatar": "r89.png", "eye_feature": "One Eye", "hair_type": "Button", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Gray"},
+  {"avatar": "r90.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Purple"},
+  {"avatar": "r91.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Mustache", "common_color": "Red"},
+  {"avatar": "r92.png", "eye_feature": "Two Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Brown"},
+  {"avatar": "r93.png", "eye_feature": "No Eyes", "hair_type": "Wires", "mouth": "Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r94.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "Teeth", "nose": "Mustache", "common_color": "Green"},
+  {"avatar": "r95.png", "eye_feature": "Two Eyes", "hair_type": "Bald", "mouth": "Teeth", "nose": "Nose", "common_color": "Green"},
+  {"avatar": "r96.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Blue"},
+  {"avatar": "r97.png", "eye_feature": "No Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r98.png", "eye_feature": "One Eye", "hair_type": "Button", "mouth": "Teeth", "nose": "No Nose", "common_color": "Gray"},
+  {"avatar": "r99.png", "eye_feature": "Two Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Green"},
+  {"avatar": "r100.png", "eye_feature": "No Eyes", "hair_type": "Antenna", "mouth": "Teeth", "nose": "No Nose", "common_color": "Pink"},
+  {"avatar": "r101.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Gray"}
 ]
 
 //Function to grab 1 random avatar with data
@@ -248,25 +248,33 @@ witnessStatements = [
   //This if set checks for having a foot as transportation then removing irrelevant witness statements, and then checking for hoverboard
    if (murderBot.transportation === "Foot"){
     statementArr.splice(statementArr.indexOf('model'), 1)
-    statementArr.splice(statementArr.indexOf('color'), 1)    
+    statementArr.splice(statementArr.indexOf('color'), 1)
+    console.log ("Foot")    
    }
    else if (murderBot.transportation === "Hoverboard"){
-    statementArr.splice(statementArr.indexOf('model'), 1)    
+    statementArr.splice(statementArr.indexOf('model'), 1)   
+    console.log ("Hoverboard") 
    }
 
    //Since we have a variety of ways to say the nose this actually checks for which type of nose the bot has and then eliminates the other two. NOTE this If statement needs to be one chain and the transportation needs to be a seperate chain of else if statements as a single bot can have features from each that would modify the array.
+   console.log (murderBot.nose)
    if (murderBot.nose === "No nose"){
-    statementArr.splice(statementArr.indexOf('Nose'), 1)
-    statementArr.splice(statementArr.indexOf('Mustache'), 1)
+    statementArr.splice(statementArr.indexOf('nose'), 1)
+    statementArr.splice(statementArr.indexOf('mustache'), 1)
+    console.log ("No Nose")
    }
    if (murderBot.nose === "Nose"){
-    statementArr.splice(statementArr.indexOf('No nose'), 1)
-    statementArr.splice(statementArr.indexOf('Mustache'), 1)
+    statementArr.splice(statementArr.indexOf('nonose'), 1)
+    statementArr.splice(statementArr.indexOf('mustache'), 1)
+    console.log ("nose")
    }
    if (murderBot.nose === "Mustache"){
-    statementArr.splice(statementArr.indexOf('No nose'), 1)
-    statementArr.splice(statementArr.indexOf('Nose'), 1)
+    statementArr.splice(statementArr.indexOf('nonose'), 1)
+    statementArr.splice(statementArr.indexOf('nose'), 1)
+    console.log ("Mustache")
    }
+   console.log (statementArr)
+   console.log (murderBot)
   // ,
   // { weapon: `I saw the robo-attacker with my own eyes - their ${murderBot.weapon} blinded me in the light. My visor vision focused and analyzed the weapon right away.` }
 
@@ -313,6 +321,10 @@ function callRobotDeath(){
     var gameOverRoll = [Math.floor(Math.random() * roboNPC.length)]
     if (gameOverRoll < 2){
       loseGame()
+      $(`.robotImg`).remove()
+      $(`.witness-statement`).remove()  
+      $('#npc-main').css('display', "none");
+      $('#play-npc').css('display', 'block') ; 
     }
   }
 
@@ -320,18 +332,18 @@ function callRobotDeath(){
 
 // Added in death animation function to be called whenever somerobo dies.
 function deathAnimation(){
-  var snd = new Audio("./assets/sound/Thunder.mp3"); //wav is also supported
-  snd.play(); //plays the sound
-  // fadeIn over 3 seconds
-  $("#rcontainer").fadeIn(2000)
-  $("#reaper").fadeIn(2000, function(){
-    // Wait for 3 seconds after fadeIn completes
-    setTimeout(function(){
-        // Image fadeOut over 2 seconds
-        $("#reaper").fadeOut(2000);
-        $("#rcontainer").fadeOut(2000);
-    }, 1500);
-  });
+  // var snd = new Audio("./assets/sound/Thunder.mp3"); //wav is also supported
+  // snd.play(); //plays the sound
+  // // fadeIn over 3 seconds
+  // $("#rcontainer").fadeIn(2000)
+  // $("#reaper").fadeIn(2000, function(){
+  //   // Wait for 3 seconds after fadeIn completes
+  //   setTimeout(function(){
+  //       // Image fadeOut over 2 seconds
+  //       $("#reaper").fadeOut(2000);
+  //       $("#rcontainer").fadeOut(2000);
+  //   }, 1500);
+  // });
   
 }
 
@@ -340,19 +352,16 @@ function winGame(){
   var snd = new Audio("./assets/sound/Victory.mp3"); //wav is also supported
   snd.play(); //plays the sound
   // fadeIn over 3 seconds
-  $("#rcontainer").fadeIn(5000)
+  $("#vcontainer").fadeIn(5000)
   $("#victory").fadeIn(5000, function(){
     // Wait for 3 seconds after fadeIn completes
     setTimeout(function(){
         // Image fadeOut over 2 seconds
         $("#victory").fadeOut(5000);
-        $("#rcontainer").fadeOut(5000);
+        $("#vcontainer").fadeOut(5000);
     }, 10000);
   });
-  $(`.robotImg`).remove()
-  $(`.witness-statement`).remove()  
-  $('#npc-main').css('display', "none");
-  $('#play-npc').css('display', 'block');  
+
 }
 
 //This calls a gameover screen
@@ -369,10 +378,7 @@ function loseGame(){
         $("#lcontainer").fadeOut(5000);
     }, 10000);
   });
-  $(`.robotImg`).remove()
-  $(`.witness-statement`).remove()  
-  $('#npc-main').css('display', "none");
-  $('#play-npc').css('display', 'block') ; 
+
 }
 
 
@@ -382,6 +388,10 @@ function callAccuse(){
   {
     //The victory screen is called, all game variables are cleared on the board by removing their elements, start button is shown and board is hidden again.
     winGame()
+    $(`.robotImg`).remove()
+    $(`.witness-statement`).remove()  
+    $('#npc-main').css('display', "none");
+    $('#play-npc').css('display', 'block');  
   }
   else{
     //When the wrong choice is made you are visually told at the bottom and another robot dies.
