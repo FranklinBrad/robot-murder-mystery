@@ -348,6 +348,11 @@ function deathAnimation(){
 
 //This calls a victory screen
 function winGame(){
+  playerName = $('#name-input')[0].value
+  console.log(playerName)
+  playerScore = roboNPC.length;
+  saveHighScore();
+  init()
   var snd = new Audio("./assets/sound/Victory.mp3"); //wav is also supported
   snd.play(); //plays the sound
   // fadeIn over 3 seconds
@@ -419,6 +424,9 @@ $(".container").on("click", ".robotImg", function() {
 
 $('#play-npc').on('click', function(){
   $('#npc-main').css('display', "block");
+  //assigns player from input box
+  playerName = $('#name-input')[0].value
+
   buildRoboArr();
   $(this).css('display', 'none')
 })
@@ -433,3 +441,27 @@ $('#player-choice').on('click', 'button', function(){
     console.log('clicked somewhere wrong');
   }
 })
+
+var playerScore = 0
+var highScores = [];
+var playerName = '';
+
+// Get stored scoreboard from localStorage
+function init() {
+  highScores = JSON.parse(localStorage.getItem("robo-scores")) || [];  
+}
+
+init();
+
+function saveHighScore (){
+  init();
+  var roboScoresObj = {
+    score: playerScore,
+    player: playerName
+  }
+  highScores.push(roboScoresObj);
+
+    // Update Local storage
+  localStorage.setItem("robo-scores", JSON.stringify(highScores));
+}
+console.log($('#name-input')[0].textContent)
