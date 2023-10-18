@@ -195,7 +195,7 @@ function getRoboImage(roboNPC) {
         roboNPC[i].model = ""
       }
       //I broke the Qtip when I added in the ID above the title, Title is actually a structual part of the Qtip 
-      var roboAppend = `<div id='suspect${i}' class='robotImg card card-block' style='width: 125px'>
+      var roboAppend = `<div id='suspect${i}' class='robotImg card card-block content' style='width: 125px'>
       <a href="#" rel="tip" 
       
       title=" ${roboNPC[i].first_name} ${roboNPC[i].last_name}
@@ -293,7 +293,7 @@ function witnessStatementFunc() {
     //repeat with each additional attempt to find a witness when there are none.
     statementArr.push(`nomore`)
   }
-  var witnessAppend = `<div class='card witness-statement'>${witnessStatements[0][statementArr[currentWitness]]}</div>`
+  var witnessAppend = `<div class='card witness-statement content'>${witnessStatements[0][statementArr[currentWitness]]}</div>`
   statementArr.splice(currentWitness,1)
 
   $("#whoDidIt").append(witnessAppend);
@@ -316,32 +316,30 @@ function callRobotDeath(){
   roboNPC.splice(murderABot, 1)
   //This is saying if there are less than 10 suspects, the game is going to roll a number based on how many suspects are left. If that roll is 0 or 1 it is gameover for the user
   //This will guarentee a gameover when there are only 3 suspects left (the murderer and 2 innocents) but also push a chance to kill a sloppy detective that is taking too long.
-  if (roboNPC.length  < 10){
+  if (roboNPC.length  < 15){
     var gameOverRoll = [Math.floor(Math.random() * roboNPC.length)]
     if (gameOverRoll < 2){
       loseGame()
-      $(`.robotImg`).remove()
-      $(`.witness-statement`).remove()  
-      $('#npc-main').css('display', "none");
-      $('#play-npc').css('display', 'block') ; 
     }
   }
 }
 
 // Added in death animation function to be called whenever somerobo dies.
 function deathAnimation(){
-  // var snd = new Audio("./assets/sound/Thunder.mp3"); //wav is also supported
-  // snd.play(); //plays the sound
-  // // fadeIn over 3 seconds
-  // $("#rcontainer").fadeIn(2000)
-  // $("#reaper").fadeIn(2000, function(){
-  //   // Wait for 3 seconds after fadeIn completes
-  //   setTimeout(function(){
-  //       // Image fadeOut over 2 seconds
-  //       $("#reaper").fadeOut(2000);
-  //       $("#rcontainer").fadeOut(2000);
-  //   }, 1500);
-  // });
+  var snd = new Audio("./assets/sound/Thunder.mp3"); //wav is also supported
+  snd.volume = .2;
+  snd.play(); //plays the sound
+
+  // fadeIn over 3 seconds
+  $("#rcontainer").fadeIn(2000)
+  $("#reaper").fadeIn(2000, function(){
+    // Wait for 3 seconds after fadeIn completes
+    setTimeout(function(){
+        // Image fadeOut over 2 seconds
+        $("#reaper").fadeOut(2000);
+        $("#rcontainer").fadeOut(2000);
+    }, 1500);
+  });
   
 }
 
@@ -352,6 +350,7 @@ function winGame(){
   playerScore = roboNPC.length;
   saveHighScore();
   var snd = new Audio("./assets/sound/Victory.mp3"); //wav is also supported
+  snd.volume = 0.2;
   snd.play(); //plays the sound
   // fadeIn over 3 seconds
   $("#vcontainer").fadeIn(5000)
@@ -363,12 +362,13 @@ function winGame(){
         $("#vcontainer").fadeOut(5000);
     }, 10000);
   });
-
+  menuMode();
 }
 
 //This calls a gameover screen
 function loseGame(){
   var snd = new Audio("./assets/sound/Lose.mp3"); //wav is also supported
+  snd.volume = 0.2;
   snd.play(); //plays the sound
   // fadeIn over 3 seconds
   $("#lcontainer").fadeIn(5000)
@@ -380,9 +380,35 @@ function loseGame(){
         $("#lcontainer").fadeOut(5000);
     }, 10000);
   });
-
+  menuMode();
 }
 
+
+function menuMode(){
+  $(`.robotImg`).remove()
+  $(`.witness-statement`).remove()  
+  $('#npc-main').css('display', "none");
+  $('#play-npc').css('display', 'block');
+  $('#formSection').css('display', 'block'); 
+
+  init();
+  if (highScores.length > 0){
+    $('#highscores-tag').css('display', 'block'); 
+    $('#highscores').css('display', 'block'); 
+    $('#clear-highscores').css('display', 'block');  
+  }
+}
+
+function gameMode(){
+  $(`.robotImg`).remove()
+  $(`.witness-statement`).remove()  
+  $('#npc-main').css('display', 'block'); 
+  $('#play-npc').css('display', "none");
+  $('#formSection').css('display', "none"); 
+  $('#highscores-tag').css('display', "none");
+  $('#highscores').css('display', "none");
+  $('#clear-highscores').css('display', "none");
+}
 
 // This does a check on if the accused box matches the id of the murderer, if not someone dies.
 function callAccuse(){
@@ -390,10 +416,6 @@ function callAccuse(){
   {
     //The victory screen is called, all game variables are cleared on the board by removing their elements, start button is shown and board is hidden again.
     winGame()
-    $(`.robotImg`).remove()
-    $(`.witness-statement`).remove()  
-    $('#npc-main').css('display', "none");
-    $('#play-npc').css('display', 'block');  
   }
   else{
     //When the wrong choice is made you are visually told at the bottom and another robot dies.
@@ -426,8 +448,10 @@ $('#play-npc').on('click', function(){
   playerName = $('#name-input')[0].value
 
   buildRoboArr();
-  $(this).css('display', 'none')
+  gameMode();
 })
+
+
 
 $('#player-choice').on('click', 'button', function(){
   if ($(this)[0].id === 'get-witness' ){
@@ -444,6 +468,9 @@ $('#clear-highscores').on('click', function(){
   var clearScores = []
   localStorage.setItem("robo-scores", JSON.stringify(clearScores));
   init();
+  $('#highscores-tag').css('display', "none");
+  $('#highscores').css('display', "none");
+  $('#clear-highscores').css('display', "none");
 })
 
 // Get stored scoreboard from localStorage
@@ -451,12 +478,13 @@ function init() {
   $('.highscore-list').remove()
   highScores = JSON.parse(localStorage.getItem("robo-scores")) || [];  
   for (i=0; i < highScores.length; i++){
-  postScores = `<div class='highscore-list card'>${highScores[i].player} solved the case with ${highScores[i].score} survivors left.</div>`
+  postScores = `<div class='highscore-list card content'>${highScores[i].player} solved the case with ${highScores[i].score} survivors left.</div>`
   $('#highscores').append(postScores)
   }
 }
 
-init();
+gameMode();
+menuMode();
 
 function saveHighScore (){
   init();
