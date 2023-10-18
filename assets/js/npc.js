@@ -238,20 +238,22 @@ function getRoboImage(roboNPC) {
     }
   }
   
-    //Adds scene text with players name
-  var sceneText = (`<div class='card witness-statement content'>Detective ${playerName}, you've been called in because there was a murder at the Hoverboard factory.  [Insert intial robotDeath Name] was found in a puddle of its own hydraulic fluid disabled with multiple blaster gun holes.  Can you help us discover the culprit of the heinous act....</div>`)
-  $('#scene').append(sceneText);
+   
   murderBotID = [Math.floor(Math.random() * npcTotal)]
   murderBot = roboNPC[murderBotID]
+   //Adds scene text with players name
+   var sceneText = (`<div class='card witness-statement content'>Detective ${playerName}, you've been called in because there was a murder at the Hoverboard factory. ${murderBot.first_name} ${murderBot.last_name} was found in a puddle of its own hydraulic fluid disabled with multiple blaster gun holes.  Can you help us discover the culprit of the heinous act....</div>`)
+   $('#scene').append(sceneText);
   roboNPC.splice(murderBotID, 1)
   //Function call to create the witness statements based on current murder bot and then call the first witness statement to kill the first bot.
   createWitnessStatements(murderBot)
   witnessStatementFunc()
+
+  
 }
 
 
 function addInfoBox(i){
-console.log('addinfo')
   var updateSmallInfo = `Name: ${roboNPC[i].first_name} ${roboNPC[i].last_name}
     Id: ${roboNPC[i].id}
     Barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
@@ -262,13 +264,7 @@ console.log('addinfo')
     Mouth: ${roboNPC[i].mouth}
     Nose: ${roboNPC[i].nose}
     Color: ${roboNPC[i].common_color}`;
-    
-console.log (updateSmallInfo + "Small Info Update")
  $('#small-info-div')[0].textContent = updateSmallInfo
- console.log($('#small-info-div'))
-
-//  <div class="small-info"></div>
-
 }
 
 
@@ -302,7 +298,6 @@ witnessStatements = [
    }
 
    //Since we have a variety of ways to say the nose this actually checks for which type of nose the bot has and then eliminates the other two. NOTE this If statement needs to be one chain and the transportation needs to be a seperate chain of else if statements as a single bot can have features from each that would modify the array.
-   console.log (murderBot.nose)
    if (murderBot.nose === "No Nose"){
     statementArr.splice(statementArr.indexOf('nose'), 1)
     statementArr.splice(statementArr.indexOf('mustache'), 1)
@@ -315,11 +310,6 @@ witnessStatements = [
     statementArr.splice(statementArr.indexOf('nonose'), 1)
     statementArr.splice(statementArr.indexOf('nose'), 1)
    }
-   console.log (statementArr)
-   console.log (murderBot)
-  // ,
-  // { weapon: `I saw the robo-attacker with my own eyes - their ${murderBot.weapon} blinded me in the light. My visor vision focused and analyzed the weapon right away.` }
-
 }
 
 
@@ -389,7 +379,6 @@ function deathAnimation(){
 
 //This calls a victory screen
 function winGame(){
-  console.log(playerName)
   playerScore = roboNPC.length;
   saveHighScore();
 
@@ -489,10 +478,14 @@ $(".container").on("click", ".robotImg", function() {
 });
 
 $('#play-npc').on('click', function(){
+  startTheGame();
+})
+
+
+function startTheGame(){
   // $('#npc-main').css('display', "block");
   //assigns player from input box
   playerName = $('#name-input')[0].value
-  console.log($('#name-input')[0].value)
   if ($('#name-input')[0].value === "")
   { 
     $('#name-input')[0].placeholder = 'HEY ENTER YOUR NAME HERE!!!'
@@ -505,8 +498,8 @@ $('#play-npc').on('click', function(){
     buildRoboArr();
     gameMode();
   }
-})
 
+}
 
 
 $('#player-choice').on('click', 'button', function(){
@@ -556,3 +549,12 @@ function saveHighScore (){
   localStorage.setItem("robo-scores", JSON.stringify(highScores));
   init();
 }
+
+
+$(`#formSection`).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+      startTheGame();
+    }
+});
