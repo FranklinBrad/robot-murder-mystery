@@ -30,7 +30,7 @@
 
 ## Play Page
 
-![Preview Screenshot](../group-project-1/assets/img/screenshot-play-page.png)
+![Preview Screenshot](./assets/img/screenshot-play-page.png)
 
 
 ## Technical requirements of the game include:
