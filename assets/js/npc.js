@@ -284,7 +284,7 @@ witnessStatements = [
    color: `The robo-attacker left the scene in something ${murderBot.color}` ,
    model: `The vehicle's model was ${murderBot.model}` ,
    transportation: `He or she was seen traveling by ${murderBot.transportation}` ,
-   location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}. Ragnar Robot always powers down during work (i.e. takes a nap), but I dont think it was him this time.` ,
+   location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}.` ,
    eyefeature: `Beep! Beep! I knew he had atleast ${murderBot.eye_feature} because most robots around here only have a visor.` ,
    hair_type: `Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of ${murderBot.hair_type}` ,
    mouth: `I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had ${murderBot.mouth}.` ,
