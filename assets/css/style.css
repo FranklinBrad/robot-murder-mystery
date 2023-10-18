@@ -212,6 +212,7 @@ h1 {
   margin-top: 2rem;
 }
 
+#small-info-div,
 #highscores-tag,
 #clear-highscores,
 #highscores
@@ -228,6 +229,8 @@ h1 {
   margin-top: 2rem;
   text-align: center;
 }
+
+#small-info-div:hover,
 #highscores-tag:hover,
 #clear-highscores:hover,
 #wrongchoice:hover,
@@ -254,4 +257,12 @@ footer {
   display: flex;
   justify-content: space-around;
   margin-bottom: 2rem;
+}
+.smallInfoSection {
+  display: none;
+}
+@media (max-width: 1000px) {
+ .smallInfoSection {
+    display: block;
+  }
 }
