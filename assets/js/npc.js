@@ -305,7 +305,7 @@ witnessStatements = [
 
    //Since we have a variety of ways to say the nose this actually checks for which type of nose the bot has and then eliminates the other two. NOTE this If statement needs to be one chain and the transportation needs to be a seperate chain of else if statements as a single bot can have features from each that would modify the array.
    console.log (murderBot.nose)
-   if (murderBot.nose === "No nose"){
+   if (murderBot.nose === "No Nose"){
     statementArr.splice(statementArr.indexOf('nose'), 1)
     statementArr.splice(statementArr.indexOf('mustache'), 1)
    }
@@ -376,14 +376,15 @@ function deathAnimation(){
   snd.play(); //plays the sound
 
   // fadeIn over 3 seconds
-  $("#rcontainer").fadeIn(2000)
-  $("#reaper").fadeIn(2000, function(){
+  $("#rcontainer").fadeIn(1000)
+  $("#reaper").fadeIn(1000, function(){
     // Wait for 3 seconds after fadeIn completes
     setTimeout(function(){
         // Image fadeOut over 2 seconds
-        $("#reaper").fadeOut(2000);
-        $("#rcontainer").fadeOut(2000);
-    }, 1500);
+        $("#reaper").fadeOut(1000);
+        $("#rcontainer").fadeOut(1000);
+        snd.pause();
+    }, 2000);
   });
   
 }
