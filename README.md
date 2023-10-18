@@ -1,6 +1,6 @@
-# robot-murder-mystery
+# Robot Murder Mystery
 
-## game description
+## Game Description
 
 The robot murder mystery game is a guesswho/clue style game. The game player will start the game by pressing a play button on the main page. On the main page, the game also includes game rules, a github repo link and a scoreboard. We built this game after brainstorming unique ways to utilize an API in coding. 
 
@@ -14,13 +14,13 @@ Technical requirements of the game include:
 
 This game creates a fun, interactive murder mystery game for the user. We learned about project management, javascript, HTML, CSS, branching and merging code. 
 
-## usage
+## Usage
 
 Game link:
 
 Game Display: ATTACH IMAGES
 
-## credits
+## Credits
 
 This game was created by Arthur Henningfield, Kurt Wensmann, Franklin Bradley and Laura Vollmer (in no particular order).
 
@@ -32,4 +32,4 @@ Laura Vollmer:
 
 Third party products utilized include Robohash, DALLE for images, and Mockaroo.
 
-## license
+## License
