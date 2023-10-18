@@ -1,12 +1,9 @@
 //How many NPC's will be in the game (1 Always dies so if you want 20 to be a part of the game you need to start with 21)
 var npcTotal = 21
-
 //RequestURL to make an API pull from mockaroo. 
 var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0`
-
 //Array to store final Robo NPC in 
 var roboNPC = []
-
 // make variable murderBot an array
 var murderBot = []
 //the actual statements used for the game
@@ -15,7 +12,9 @@ var witnessStatements = []
 var statementArr = []
 // accuse selector
 var accuseSelected = ""
-
+var playerScore = 0
+var highScores = [];
+var playerName = '';
 
 //These variables should never be modified so they are set as a const
 const npcDescArr = [
@@ -200,15 +199,15 @@ function getRoboImage(roboNPC) {
       <a href="#" rel="tip" 
       
       title=" ${roboNPC[i].first_name} ${roboNPC[i].last_name}
-      id: ${roboNPC[i].id}
-      barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
-      transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
-      location: ${roboNPC[i].location}
-      eyes: ${roboNPC[i].eye_feature}
-      hair: ${roboNPC[i].hair_type} 
-      mouth: ${roboNPC[i].mouth}
-      nose: ${roboNPC[i].nose}
-      color: ${roboNPC[i].common_color}">
+      Id: ${roboNPC[i].id}
+      Barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
+      Transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
+      Location: ${roboNPC[i].location}
+      Eyes: ${roboNPC[i].eye_feature}
+      Hair: ${roboNPC[i].hair_type} 
+      Mouth: ${roboNPC[i].mouth}
+      Nose: ${roboNPC[i].nose}
+      Color: ${roboNPC[i].common_color}">
       <img src='${roboImage}' alt='robo suspect' width='100px' height='100px'class='l-1' />
       </a>
       </div>`
@@ -327,7 +326,6 @@ function callRobotDeath(){
       $('#play-npc').css('display', 'block') ; 
     }
   }
-
 }
 
 // Added in death animation function to be called whenever somerobo dies.
@@ -443,13 +441,20 @@ $('#player-choice').on('click', 'button', function(){
   }
 })
 
-var playerScore = 0
-var highScores = [];
-var playerName = '';
+$('#clear-highscores').on('click', function(){
+  var clearScores = []
+  localStorage.setItem("robo-scores", JSON.stringify(clearScores));
+  init();
+})
 
 // Get stored scoreboard from localStorage
 function init() {
+  $('.highscore-list').remove()
   highScores = JSON.parse(localStorage.getItem("robo-scores")) || [];  
+  for (i=0; i < highScores.length; i++){
+  postScores = `<div class='highscore-list card'>${highScores[i].player} solved the case with ${highScores[i].score} survivors left.</div>`
+  $('#highscores').append(postScores)
+  }
 }
 
 init();
@@ -461,8 +466,10 @@ function saveHighScore (){
     player: playerName
   }
   highScores.push(roboScoresObj);
+  highScores.sort((a,b) => b.score - a.score);
+  if (highScores.length > 4) highScores.splice(5)
 
     // Update Local storage
   localStorage.setItem("robo-scores", JSON.stringify(highScores));
+  init();
 }
-console.log($('#name-input')[0].textContent)
