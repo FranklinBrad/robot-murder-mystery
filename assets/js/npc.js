@@ -3,7 +3,10 @@ var npcTotal = 21
 
 // RequestURL to make an API pull from mockaroo. 
 //key=d862e8b0 or key=76436720 - Cost effective
-var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=76436720`
+var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0-`
+
+// Backup this is a backup array used if we run out of API calls. backuproo fills up instead with npcTotal amount of random from mockaroo.js which has 1000 premade pulls
+var backuparoo = []
 
 // Array to store final Robo NPC in 
 var roboNPC = []
@@ -146,9 +149,26 @@ function buildRoboArr() {
   //Fetch request to grab mockdata from Mockaroo using requestUrl global Variable
   fetch(requestUrl)
     .then(function (response) {
+      //This is error handling. If the mockaroo API is not accessable for any reason it then switches to the local mockaroo.js file 
+      if (!response.ok){
+        var localMock = true;
+        return localMock;
+      }
       return response.json();
     })
+    //if an api pull is successfull data is fresh Mockaroo data, if it fails data is a boolean that is either true or
     .then(function (data) {
+      localMock = false;
+      if (data){
+        for(i = 0; i < npcTotal; i++){
+        mockarooRandom = [Math.floor(Math.random() * mockMockaroo.length)]
+        backuparoo.push(mockMockaroo[mockarooRandom])
+   
+
+        }
+        data = backuparoo;
+        console.log(data +'afterdata')
+      }
 
       // Clears the roboNPC array so we can create a fresh game.
       roboNPC = []
@@ -161,7 +181,7 @@ function buildRoboArr() {
 
         // This builds a single variable line that contains all the data for a single NPC in the array
         var tempLine = [{
-          'id': data[i].id,
+          'id': i+1,
           'first_name': data[i].first_name,
           'last_name': data[i].last_name,
           'barcode': data[i].barcode,
