@@ -3,7 +3,7 @@ var npcTotal = 21
 
 // RequestURL to make an API pull from mockaroo. 
 //key=d862e8b0 or key=76436720 - Cost effective
-var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0`
+var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0-`
 
 // Backup this is a backup array used if we run out of API calls. backuproo fills up instead with npcTotal amount of random from mockaroo.js which has 1000 premade pulls
 var backuparoo = []
@@ -74,7 +74,7 @@ const npcDescArr = [
   {"avatar": "r35.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
   {"avatar": "r36.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
   {"avatar": "r37.png", "eye_feature": "Two Eyes", "hair_type": "Light", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Blue"},
-  {"avatar": "r38.png", "eye_feature": "Two Eyes", "hair_type": "button", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver"},
+  {"avatar": "r38.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver"},
   {"avatar": "r39.png", "eye_feature": "Two Eyes", "hair_type": "Button", "mouth": "Teeth", "nose": "No Nose", "common_color": "Orange"},
   {"avatar": "r40.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Blue"},
   {"avatar": "r41.png", "eye_feature": "Two Eyes", "hair_type": "Light", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Silver"},
@@ -95,7 +95,7 @@ const npcDescArr = [
   {"avatar": "r56.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
   {"avatar": "r57.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Mustache", "common_color": "Purple"},
   {"avatar": "r58.png", "eye_feature": "No Eyes", "hair_type": "Radar", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
-  {"avatar": "r59.png", "eye_feature": "One Eye", "hair_type": "Bolt", "mouth": "No Teeth", "nose": "No Nose", "common_color": "PInk"},
+  {"avatar": "r59.png", "eye_feature": "One Eye", "hair_type": "Light", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
   {"avatar": "r60.png", "eye_feature": "Two Eyes", "hair_type": "Ball Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Purple"},
   {"avatar": "r61.png", "eye_feature": "One Eye", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Pink"},
   {"avatar": "r62.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Yellow"},
@@ -108,7 +108,7 @@ const npcDescArr = [
   {"avatar": "r69.png", "eye_feature": "Two Eyes", "hair_type": "Antenna", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Yellow"},
   {"avatar": "r70.png", "eye_feature": "Two Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Nose", "common_color": "Yellow"},
   {"avatar": "r71.png", "eye_feature": "One Eye", "hair_type": "Bald", "mouth": "No Teeth", "nose": "Mustache", "common_color": "Silver"},
-  {"avatar": "r72.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "No Nose", "common_color": "yellow"},
+  {"avatar": "r72.png", "eye_feature": "No Eyes", "hair_type": "Bald", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Yellow"},
   {"avatar": "r73.png", "eye_feature": "Two Eyes", "hair_type": "Plate 7", "mouth": "No Teeth", "nose": "No Nose", "common_color": "White"},
   {"avatar": "r74.png", "eye_feature": "One Eye", "hair_type": "Wires", "mouth": "No Teeth", "nose": "No Nose", "common_color": "White"},
   {"avatar": "r75.png", "eye_feature": "One Eye", "hair_type": "Spike", "mouth": "No Teeth", "nose": "No Nose", "common_color": "Purple"},
@@ -338,17 +338,22 @@ function createWitnessStatements(murderBot) {
 
    // Since we have a variety of ways to say the nose this actually checks for which type of nose the bot has and then eliminates the other two. NOTE this If statement needs to be one chain and the transportation needs to be a seperate chain of else if statements as a single bot can have features from each that would modify the array.
    if (murderBot.nose === "No Nose"){
+    console.log('No Nose')
     statementArr.splice(statementArr.indexOf('nose'), 1)
     statementArr.splice(statementArr.indexOf('mustache'), 1)
    }
    if (murderBot.nose === "Nose"){
+    console.log('Nose')
     statementArr.splice(statementArr.indexOf('nonose'), 1)
     statementArr.splice(statementArr.indexOf('mustache'), 1)
    }
    if (murderBot.nose === "Mustache"){
+    console.log('Mustache')
     statementArr.splice(statementArr.indexOf('nonose'), 1)
     statementArr.splice(statementArr.indexOf('nose'), 1)
    }
+   console.log(murderBot)
+   console.log (statementArr)
 }
 
 /////////////////////////////////////////////////ROOT FUNCTION START//////////////////////////////////////////////////////////////////////
