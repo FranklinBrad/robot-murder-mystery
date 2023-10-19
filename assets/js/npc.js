@@ -3,7 +3,7 @@ var npcTotal = 21
 
 // RequestURL to make an API pull from mockaroo. 
 //key=d862e8b0 or key=76436720 - Cost effective
-var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0-`
+var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0`
 
 // Backup this is a backup array used if we run out of API calls. backuproo fills up instead with npcTotal amount of random from mockaroo.js which has 1000 premade pulls
 var backuparoo = []
@@ -338,22 +338,17 @@ function createWitnessStatements(murderBot) {
 
    // Since we have a variety of ways to say the nose this actually checks for which type of nose the bot has and then eliminates the other two. NOTE this If statement needs to be one chain and the transportation needs to be a seperate chain of else if statements as a single bot can have features from each that would modify the array.
    if (murderBot.nose === "No Nose"){
-    console.log('No Nose')
     statementArr.splice(statementArr.indexOf('nose'), 1)
     statementArr.splice(statementArr.indexOf('mustache'), 1)
    }
    if (murderBot.nose === "Nose"){
-    console.log('Nose')
     statementArr.splice(statementArr.indexOf('nonose'), 1)
     statementArr.splice(statementArr.indexOf('mustache'), 1)
    }
    if (murderBot.nose === "Mustache"){
-    console.log('Mustache')
     statementArr.splice(statementArr.indexOf('nonose'), 1)
     statementArr.splice(statementArr.indexOf('nose'), 1)
    }
-   console.log(murderBot)
-   console.log (statementArr)
 }
 
 /////////////////////////////////////////////////ROOT FUNCTION START//////////////////////////////////////////////////////////////////////
@@ -390,7 +385,7 @@ function witnessStatementFunc() {
 function callAccuse(){
 
   // We have to use the == instead of === because the data types aren't the same however the value is if the user guessed right
-  if (murderBot.id == accuseSelected-1)
+  if (murderBot.id == accuseSelected+1)
   {
 
     //The victory screen is called, all game variables are cleared on the board by removing their elements, start button is shown and board is hidden again.
