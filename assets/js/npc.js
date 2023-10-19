@@ -221,7 +221,7 @@ function getRoboImage(roboNPC) {
       
       title=" ${roboNPC[i].first_name} ${roboNPC[i].last_name}
       Id: ${roboNPC[i].id}
-      Barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
+      PhoneNumber: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
       Transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
       Location: ${roboNPC[i].location}
       Eyes: ${roboNPC[i].eye_feature}
@@ -256,7 +256,7 @@ function addInfoBox(i) {
   console.log('addinfo')
   var updateSmallInfo = `Name: ${roboNPC[i].first_name} ${roboNPC[i].last_name}
     Id: ${roboNPC[i].id}
-    Barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
+    PhoneNumber: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
     Transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
     Location: ${roboNPC[i].location}
     Eyes: ${roboNPC[i].eye_feature}
@@ -282,12 +282,12 @@ function createWitnessStatements(murderBot) {
   statementArr = ['areacode', 'barcode', 'color', 'model', 'transportation', 'location', 'eyefeature', 'hair_type', 'mouth', 'nose', 'nonose', 'mustache']
   witnessStatements = [
     {
-      areacode: `I was able to see a text message from the Murderbot on his or her phone. It looks like they were trying to order some new widgets. The area code was ${murderBot.areacode}.`,
-      barcode: `Being a robot means you have excellent memory. I knew I wouldn't forget the last digit of the barcode from the call he or she was getting. It was ${String(murderBot.barcode).substr(-1)}.`,
+      areacode: `I was able to see a text message from the Murderbot on his or her phone. It looks like they were trying to order some new widgets. The area code of his phone number was ${murderBot.areacode}.`,
+      barcode: `Being a robot means you have excellent memory. I knew I wouldn't forget the last digit of the Murderbot's phone number. It was ${String(murderBot.barcode).substr(-1)}.`,
       color: `The Murderbot fled the scene of the crime in something ${murderBot.color}.`,
       model: `All this new technology these days. Self driving vehicles everywhere. The vehicle's model was ${murderBot.model}.`,
       transportation: `He or she was seen traveling by ${murderBot.transportation}.`,
-      location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}.`,
+      location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}. Must be the scene of the crime.`,
       eyefeature: `Beep! Beep! I got a good look at the Murderbot. I stared right into his ${murderBot.eye_feature}.`,
       hair_type: `Well let me tell you - Bots these days spend lots of money on their metal bodywork.The Murderbot had the hairstyle of ${murderBot.hair_type}.`,
       mouth: `I knew the second I saw him - he had ${murderBot.mouth}.`,
