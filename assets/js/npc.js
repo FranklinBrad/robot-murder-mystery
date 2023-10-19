@@ -3,7 +3,7 @@ var npcTotal = 21
 
 // RequestURL to make an API pull from mockaroo. 
 //key=d862e8b0 or key=76436720 - Cost effective
-var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0-`
+var requestUrl = `https://my.api.mockaroo.com/robo_murder.json?key=d862e8b0`
 
 // Backup this is a backup array used if we run out of API calls. backuproo fills up instead with npcTotal amount of random from mockaroo.js which has 1000 premade pulls
 var backuparoo = []
