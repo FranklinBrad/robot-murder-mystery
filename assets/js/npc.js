@@ -539,7 +539,8 @@ function menuMode(){
   $(`.witness-statement`).remove()  
   $('#npc-main').css('display', "none");
   $('#play-npc').css('display', 'block');
-  $('#formSection').css('display', 'block'); 
+  $('#formSection').css('display', 'block');
+  $("#wrongchoice").css('display', "none"); 
 
   // init loads the high score board and then if highscores exist places it underneath the start option.
   init();
@@ -562,6 +563,7 @@ function gameMode(){
   $('#highscores-tag').css('display', "none");
   $('#highscores').css('display', "none");
   $('#clear-highscores').css('display', "none");
+  $("#wrongchoice").css('display', "none"); 
 }
 
 /////////////////////////////////////////////////ROOT FUNCTION START//////////////////////////////////////////////////////////////////////
