@@ -221,7 +221,7 @@ function getRoboImage(roboNPC) {
       
       title=" ${roboNPC[i].first_name} ${roboNPC[i].last_name}
       Id: ${roboNPC[i].id}
-      Barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
+      Phone Number: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
       Transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
       Location: ${roboNPC[i].location}
       Eyes: ${roboNPC[i].eye_feature}
@@ -256,7 +256,7 @@ function getRoboImage(roboNPC) {
 function addInfoBox(i){
   var updateSmallInfo = `Name: ${roboNPC[i].first_name} ${roboNPC[i].last_name}
     Id: ${roboNPC[i].id}
-    Barcode: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
+    Phone Number: (${roboNPC[i].areacode}) ${roboNPC[i].barcode}
     Transportation: ${roboNPC[i].transportation}: ${roboNPC[i].color} ${roboNPC[i].model}
     Location: ${roboNPC[i].location}
     Eyes: ${roboNPC[i].eye_feature}
@@ -272,22 +272,24 @@ function addInfoBox(i){
 
 //Created a call function to update the witness staements and made it a global variable that gets changed when the function is called. It was having a hard time being passed around as a constant and creating it on the global scale as a constant was making it so it didn't have proper information from the murderbot. Also later on this would cause problems in the second game since we would not be able to update it for the new murderbot.
 // in the barcode pull the string literal is now ${String(murderBot.barcode).substr(-1)} which turns the .barcode into a string and then substr(-1) counts from the end pulling the last character out giving us the last number.
-function createWitnessStatements(murderBot){
-statementArr = ['areacode', 'barcode', 'color', 'model', 'transportation', 'location', 'eyefeature', 'hair_type', 'mouth', 'nose', 'nonose', 'mustache']
-witnessStatements = [
-  { areacode: `I was able to see a text message from the robo-attacker on the his or her phone. It looks like they were trying to order some new widgets from Maryland. The area code was ${murderBot.areacode}.`,
-   barcode: `Being a robot you have excellent memory. I knew I wouldn't forget the last digit of the barcode from the call he or she was getting. It was ${String(murderBot.barcode).substr(-1)}` ,
-   color: `The robo-attacker left the scene in something ${murderBot.color}` ,
-   model: `The vehicle's model was ${murderBot.model}` ,
-   transportation: `He or she was seen traveling by ${murderBot.transportation}` ,
-   location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}.` ,
-   eyefeature: `Beep! Beep! I knew he had atleast ${murderBot.eye_feature} because most robots around here only have a visor.` ,
-   hair_type: `Well let me tell you - Bots these days spend lots of money on their metal bodywork.The robo - attacker had the hairstyle of ${murderBot.hair_type}` ,
-   mouth: `I knew the second I saw him - this Bot had not been to the robodentist in a while BECAUSE he had ${murderBot.mouth}.` ,
-   nonose: `Boop beep! It sure will be hard to find who did it, like must of the tin cans around here I didn't even see a nose on that robot!`,
-   nose: "Beep beep! The robo-sandwich was a delicacy in the Bot World filled with the finest bolts. I saw the robo-attacker eating one earlier in the day, he must have exquisite taste with his ability to use his nose to smell. ",
-   mustache:`I saw a lot of fine metal like wires by where that last bot was murdered. I'm sure the one who did it must have had a mustache`,
-   nomore:`While looking for a new witness you realize there are none left and another robot was murdered.` }]
+function createWitnessStatements(murderBot) {
+  statementArr = ['areacode', 'barcode', 'color', 'model', 'transportation', 'location', 'eyefeature', 'hair_type', 'mouth', 'nose', 'nonose', 'mustache']
+  witnessStatements = [
+    {
+      areacode: `I was able to see a text message from the Murderbot on his or her phone. It looks like they were trying to order some new widgets. The area code of his/her phone number was ${murderBot.areacode}.`,
+      barcode: `Being a robot means you have excellent memory. I knew I wouldn't forget the last digit of the Murderbot's phone number. It was ${String(murderBot.barcode).substr(-1)}.`,
+      color: `The Murderbot fled the scene of the crime in something ${murderBot.color}.`,
+      model: `All this new technology these days. Self driving vehicles everywhere. The vehicle's model was ${murderBot.model}.`,
+      transportation: `Beep! They sped away from the scene of the crime. He or she was seen traveling by ${murderBot.transportation}.`,
+      location: `Beep boop! I was shocked to hear a loud THUMP in the ${murderBot.location}. Must be the scene of the crime.`,
+      eyefeature: `Beep! Beep! I got a good look at the Murderbot. I stared right into his or her ${murderBot.eye_feature}.`,
+      hair_type: `Well let me tell you - Bots these days spend lots of money on their metal bodywork.The Murderbot had the hairstyle of ${murderBot.hair_type}.`,
+      mouth: `I knew the second I saw him - he had ${murderBot.mouth}.`,
+      nonose: `Boop beep! It sure will be hard to find who did it. Like most of the tin cans around here, I didn't even see a nose on that robot!`,
+      nose: "Beep beep! I definitely saw his shadow profile with a nose. ",
+      mustache: `I saw a lot of fine metal-like wires by where that last bot was murdered. I'm sure the one who did it must have had a mustache.`,
+      nomore: `While looking for a new witness you realize there are none left and the Murderbot strikes again. Another robot dies.`
+    }]
   //This if set checks for having a foot as transportation then removing irrelevant witness statements, and then checking for hoverboard
    if (murderBot.transportation === "Foot"){
     statementArr.splice(statementArr.indexOf('model'), 1)
